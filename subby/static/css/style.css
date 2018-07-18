@@ -1,0 +1,47 @@
+#nav_a {
+  color: grey;
+  margin-left: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+#nav_a:hover {
+	color: green;
+}
+
+.hello {
+  color: yellow;
+}
+
+
+#sublet_title {
+	color:black;
+	
+}
+
+#sublet_title:hover {
+	color:blue;
+	
+}
+
+#map {
+    height: 250px;
+    width: 300px;
+    /* margin:auto; */
+}
+
+#sublet_description {
+	width: 500px;
+}
+
+#map_container {
+	margin-left: 75px;
+}
+
+
+#pagination_row {
+	/* background-color: black; */
+	/* width: 70%; */
+	/* padding-left:300px; */
+	/* text-align:center; */
+}

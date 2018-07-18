@@ -13,7 +13,7 @@
 			<!-- <a href="{% url 'subby:SubletDetail' sublet.id %}"><h3 id="sublet_title">{{ sublet.title }}</h3></a> -->
 				<div onclick="window.location='{% url 'subby:SubletDetail' sublet.id %}';" style="cursor:pointer;">
 				<h4 id="sublet_title">{{ sublet.title }}</h4>
-				<img src="{{ sublet.front_image.url }}" class="img-fluid"height="200" width="200" /> 
+				<img src="{{ image }}" class="img-fluid"height="200" width="200" /> 
 				</div>
 		</div>
 		<div class="col-md-3 mt-1">

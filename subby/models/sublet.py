@@ -7,6 +7,8 @@ from django.conf import settings
 ##Temporary sublet model for report prototype purpose
 ######################
 
+
+
 class Sublet(models.Model):
 	
 	latitude = models.FloatField()
@@ -20,14 +22,25 @@ class Sublet(models.Model):
 	description = models.TextField()
 	title = models.CharField(max_length=50)
 	price = models.FloatField()
-
-	front_image = models.ImageField(upload_to='images/', null=True, blank=True)
 	
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	
 	
 	def summary(self):
 		if len(self.description) > 150:
 			return self.description[:150] + "......"
 		else:
 			return self.description
+
+
+class SubletImage(models.Model):
+	sublet = models.ForeignKey(Sublet, related_name='sublet', on_delete=models.CASCADE)
+	image = models.ImageField(upload_to='image/')
+	
+
+	
+	
+
+		
+		
 		
