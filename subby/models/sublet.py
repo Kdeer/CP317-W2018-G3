@@ -7,6 +7,11 @@ from django.conf import settings
 ##Temporary sublet model for report prototype purpose
 ######################
 
+class SubletManager(models.Manager):
+	def get_cover_image(self):
+		qs = self.get_queryset()
+		print(qs)
+		return qs
 
 
 class Sublet(models.Model):
@@ -24,6 +29,8 @@ class Sublet(models.Model):
 	price = models.FloatField()
 	
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	
+	objects = SubletManager()
 	
 	
 	def summary(self):

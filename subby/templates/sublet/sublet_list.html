@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+{% load staticfiles %}
 <br /><br />
 
 {% for sublet in object_list %}
@@ -13,7 +13,14 @@
 			<!-- <a href="{% url 'subby:SubletDetail' sublet.id %}"><h3 id="sublet_title">{{ sublet.title }}</h3></a> -->
 				<div onclick="window.location='{% url 'subby:SubletDetail' sublet.id %}';" style="cursor:pointer;">
 				<h4 id="sublet_title">{{ sublet.title }}</h4>
-				<img src="{{ image }}" class="img-fluid"height="200" width="200" /> 
+				{% for image in image_list %}
+					{% if image.sublet.id == sublet.id %}
+					<img src="{{ image.image.url }}" class="img-fluid"height="200" width="200" /> 
+					{% endif %}
+				{% endfor %}
+				{% if sublet.id not in sublet_id_list %}
+					<img src="{% static 'images/no_image.png' %}" class="img-fluid" height="200" width="200" />
+				{% endif %}
 				</div>
 		</div>
 		<div class="col-md-3 mt-1">

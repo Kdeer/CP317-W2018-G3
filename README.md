@@ -19,6 +19,7 @@
 	*doskey makemigrations=python manage.py makemigrations --settings=subby_project.settings.development
 	*doskey migrate=python manage.py migrate --settings=subby_project.settings.development
 	*doskey createsuperuser=python manage.py createsuperuser --settings=subby_project.settings.development
+	*doskey static=python manage.py collectstatic --settings=subby_project.settings.development
 
 #### Testing
   * Run tests (without coverage): `python run manage.py test --settings=subby_project.settings.development`

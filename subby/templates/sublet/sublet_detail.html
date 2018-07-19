@@ -4,7 +4,7 @@
 {% block content %}
 <br />
 <div class="container">
-	
+	{% load staticfiles %}
 	<div class="row">
 		<div class="col-md-3">
 			<h4>{{ object.title }}</h4>
@@ -15,10 +15,25 @@
 
 	</div>
 	<div class="row">
-		<div class="col-md-5">
-			<img src="{{ image.image.url }}" class="img-fluid"height="300" width="400"/>
+		<div class="col-md-4">
+			{% if cover_image %}
+				<img src="{{ cover_image.url }}" class="img-fluid" height="300" width="400"/>
+			{% else %}
+				<img src="{% static 'images/no_image.png' %}" class="img-fluid" height="300" width="400" />
+			{% endif %}
 		</div>
-		<div class="col-md-6 offset-md-1">
+		<div class="col-md-2">
+			{% if rest_images|length > 0 %}
+				{% for image in rest_images %}
+					<div class="row">
+						<img src="{{ image.url }}" height="60" width="60"/>
+					</div>
+				{% endfor %}
+
+
+			{% endif %}
+		</div>
+		<div class="col-md-5">
 			<div id="map">
 
 			</div>
