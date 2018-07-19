@@ -50,7 +50,7 @@ class SubletDetail(DetailView):
 			cover_image = images[0].image
 			ctx['cover_image'] = cover_image
 			rest_images = []
-			for n in range(1, len(images)):
+			for n in range(len(images)):
 				rest_images.append(images[n].image)
 			ctx['rest_images'] = rest_images
 		return ctx
