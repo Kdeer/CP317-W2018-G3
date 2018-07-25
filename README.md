@@ -14,12 +14,12 @@
   * Ensure `python` and `pip` are installed (or the appropriate python 3.X and python3-pip for your platform). From the project directory, run `pip install -r requirements.txt`
   * From the project directory, run `python manage.py runserver --settings=subby_project.settings.development`. Subby will be running at `http://localhost:8000`
   
-  *windows user doskey alias:
-	*doskey runserver=python manage.py runserver --settings=subby_project.settings.development
-	*doskey makemigrations=python manage.py makemigrations --settings=subby_project.settings.development
-	*doskey migrate=python manage.py migrate --settings=subby_project.settings.development
-	*doskey createsuperuser=python manage.py createsuperuser --settings=subby_project.settings.development
-	*doskey static=python manage.py collectstatic --settings=subby_project.settings.development
+#### windows user doskey alias:
+* doskey runserver=python manage.py runserver --settings=subby_project.settings.development
+* doskey makemigrations=python manage.py makemigrations --settings=subby_project.settings.development
+* doskey migrate=python manage.py migrate --settings=subby_project.settings.development
+* doskey createsuperuser=python manage.py createsuperuser --settings=subby_project.settings.development
+* doskey static=python manage.py collectstatic --settings=subby_project.settings.development
 
 #### Testing
   * Run tests (without coverage): `python run manage.py test --settings=subby_project.settings.development`
