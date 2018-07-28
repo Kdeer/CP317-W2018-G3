@@ -1,22 +1,63 @@
 {% extends 'application/base.html' %}
 
-{% block content %}
-    Index users<br /><br />
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/users/users.css' %}"/>
+{% endblock %}
 
-    {% if users %}
-        <ul>
-            {% for user in users %}
-                <li>
-                    <div>
-                        First name: {{ user.first_name }}<br />
-                        Last name: {{ user.last_name }}<br />
-                        Email: {{ user.email }}<br />
-                        Link: <a href="{% url 'subby:user_show' user.id %}">Show User {{ user.id }}</a>
+{% block content %}
+    <div class="container">
+        <div class="jumbotron jumbo-container" style="min-height: 90vh;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>User Administration</h2>
                     </div>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No users present</p>
-    {% endif %}
+                    <div class="col-md-5 offset-md-3" id="user-search-form">
+                        <form action="{% url 'subby:user_index' %}" method="GET">
+                            <div class="form-group">
+                                {% if query %}
+                                    <input class="form-control" type="search" placeholder="{{ query }}" aria-label="User Filter" name="query">
+                                {% else %}
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="User Filter" name="query">
+                                {% endif %}
+
+                                <button class="btn btn-secondary search-btn" id="user-search-button" type="submit">Search</button>
+
+                                {% if query %}
+                                    <a href="{% url 'subby:user_index' %}">
+                                        <button class="btn btn-secondary search-btn" id="user-search-clear">Clear</button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    {% if users %}
+                        <div class="row">
+                            <div class="col-md-4"><h5>Email</h5></div>
+                            <div class="col-md-4"><h5>First Name</h5></div>
+                            <div class="col-md-4"><h5>Last Name</h5></div>
+                        </div>
+                        {% for user in users %}
+                            <div class="row">
+                                <div class="col-md-4"><a href="{% url 'subby:user_show' user.id %}">{{ user.email }}</a></div>
+                                <div class="col-md-4">
+                                    <a href="{% url 'subby:user_show' user.id %}">
+                                        {% if user.first_name != None %} {{ user.first_name }} {% else %} {% endif %}
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="{% url 'subby:user_show' user.id %}">
+                                        {% if user.last_name != None %} {{ user.last_name }} {% else %} {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h5>No users to show</h5>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

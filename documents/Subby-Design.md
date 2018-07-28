@@ -3,44 +3,44 @@
 ---
 ## Design Document
 
-1. **[Introduction](#1introduction)**  
-  1.1. [Purpose](#11purpose)  
-  1.2. [Intended Audience](#12intendedaudience)  
-  1.3. [Product Scope](#13productscope)  
-  1.4. [Referencing Documents](#14referencingdocuments)  
-2. **[Major Features](#2majorfeatures)**  
-  2.1. [Browse/Search Sublet Listings](#21browsesearchsubletlistings)  
-  2.2. [Create Sublet Listings](#22createsubletlistings)  
-  2.3. [Contact Sublet Owner](#23contactsubletowner)  
-  2.4. [Create/Edit User Account](#24createedituseraccount)  
-  2.5. [Add/Remove Favourite Sublet Listings](#25addremovefavouritesubletlistings)  
-  2.6. [Edit/Delete Posted Sublet Listings](#26editdeletepostedsubletlistings)  
-  2.7. [Submit Reports](#27submitreports)  
-3. **[Design Considerations](#3designconsiderations)**  
-  3.1. [Assumptions and Dependencies](#31assumptionsanddependencies)  
-  3.2. [End-user Characteristics](#32endusercharacteristics)  
-  3.3. [General Constraints](#33generalconstraints)  
-  3.4. [Goals and Guidelines](#34goalsandguidelines)  
-  3.5. [Development Methods](#35developmentmethods)  
-4. **[Development Policies](#developmentpolicies)**  
-  4.1. [Technical Standards and Guidelines](#41technicalstandardsandguidelines)  
-  4.1.1. [General Guidelines](#411generalguidelines)  
-  4.1.2. [Technical Standards](#412technicalstandards)  
-  4.1.3. [Security and Privacy Considerations](#413securityandprivacyconsiderations)  
-  4.1.4. [Control Flow](#414controlflow)  
-  4.2. [Project Deployment](#42projectdeployment)  
-5. **[Project Testing](#5projecttesting)**  
-  5.1. [Testing Strategies](#51testingstrategies)  
-6. **[Project Architecture](#6projectarchitecture)**  
-  6.1. [Class Diagram](#61classdiagram)  
-  6.2. [Package Details](#61packagedetails)  
-  6.2.1. [User Package](#621userpackage)  
-  6.2.2. [Sublet Package](#622subletpackage)  
-  6.2.3. [Rating Package](#623ratingpackage)  
-  6.2.4. [Favorite Package](#624favoritepackage)  
-  6.2.5. [Report Package](#625reportpackage)  
-7. **[Data Dictionary](#7datadictionary)**  
-8. **[Revision History](#8revisionhistory)**  
+1. **[Introduction](#1introduction)**
+  1.1. [Purpose](#11purpose)
+  1.2. [Intended Audience](#12intendedaudience)
+  1.3. [Product Scope](#13productscope)
+  1.4. [Referencing Documents](#14referencingdocuments)
+2. **[Major Features](#2majorfeatures)**
+  2.1. [Browse/Search Sublet Listings](#21browsesearchsubletlistings)
+  2.2. [Create Sublet Listings](#22createsubletlistings)
+  2.3. [Contact Sublet Owner](#23contactsubletowner)
+  2.4. [Create/Edit User Account](#24createedituseraccount)
+  2.5. [Add/Remove Favourite Sublet Listings](#25addremovefavouritesubletlistings)
+  2.6. [Edit/Delete Posted Sublet Listings](#26editdeletepostedsubletlistings)
+  2.7. [Submit Reports](#27submitreports)
+3. **[Design Considerations](#3designconsiderations)**
+  3.1. [Assumptions and Dependencies](#31assumptionsanddependencies)
+  3.2. [End-user Characteristics](#32endusercharacteristics)
+  3.3. [General Constraints](#33generalconstraints)
+  3.4. [Goals and Guidelines](#34goalsandguidelines)
+  3.5. [Development Methods](#35developmentmethods)
+4. **[Development Policies](#developmentpolicies)**
+  4.1. [Technical Standards and Guidelines](#41technicalstandardsandguidelines)
+  4.1.1. [General Guidelines](#411generalguidelines)
+  4.1.2. [Technical Standards](#412technicalstandards)
+  4.1.3. [Security and Privacy Considerations](#413securityandprivacyconsiderations)
+  4.1.4. [Control Flow](#414controlflow)
+  4.2. [Project Deployment](#42projectdeployment)
+5. **[Project Testing](#5projecttesting)**
+  5.1. [Testing Strategies](#51testingstrategies)
+6. **[Project Architecture](#6projectarchitecture)**
+  6.1. [Class Diagram](#61classdiagram)
+  6.2. [Package Details](#61packagedetails)
+  6.2.1. [User Package](#621userpackage)
+  6.2.2. [Sublet Package](#622subletpackage)
+  6.2.3. [Rating Package](#623ratingpackage)
+  6.2.4. [Favorite Package](#624favoritepackage)
+  6.2.5. [Report Package](#625reportpackage)
+7. **[Data Dictionary](#7datadictionary)**
+8. **[Revision History](#8revisionhistory)**
 
 # 1. Introduction
 In the Design Phase we consider the behaviour of the system and detail its design.
@@ -97,7 +97,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 ## 2.7. Submit Reports
 * Users are able to issue reports concerning any violations of Subby's [Terms and Conditions Policy](https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&Conditions.md)
   * Reports will be reviewed by administrators and the appropriate penalties will be issued.
-  * Penalties will depend on the severity of the violation and can range from deletion of the listing or temporary suspension to indefinite banning of the violating account. 
+  * Penalties will depend on the severity of the violation and can range from deletion of the listing or temporary suspension to indefinite banning of the violating account.
 
 # 3. Design Considerations
 ## 3.1. Assumptions and Dependencies
@@ -106,7 +106,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 * Google Maps API will be available for use
 
 ## 3.2. End-user Characteristics
-* The ability for administrators to fix various bugs that arise, provide updates for the website when appropriate and maintain the website for years to come   
+* The ability for administrators to fix various bugs that arise, provide updates for the website when appropriate and maintain the website for years to come
 * Users have the ability to filter their searches based on their needs
 * Users are able to view available sublets on a map
 * Users can post their rooms for rent in addition to posting "wanted" ads
@@ -119,11 +119,11 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 	* $0.50 USD per 1,000 map loads over the daily free limit up to a maximum of 100,000 map loads
   	* Subby administrators are trying to make the site as cost-effective as possible which will limit the site to a daily limit of 25,000 map loads
 		* Once the site goes above the 25,000 map loads limit, users will not be able to view the map and instead will have to browse sublets manually through the listings page
-		* However, the Subby team anticipate that 25,000 map loads will be enough for the first few years of Subby's release 
+		* However, the Subby team anticipate that 25,000 map loads will be enough for the first few years of Subby's release
 
 ## 3.4. Goals and Guidelines
 * Comments will be used when coding to make it easier for the SQA team to understand the code
-	* Subby SQA team members will run the code, make appropriate suggestions to the author and then act accordingly    
+	* Subby SQA team members will run the code, make appropriate suggestions to the author and then act accordingly
 * All features in the design and analysis documents will be adhered to
 * Any feature changes made to Subby will be documented
 * All work done for the project will have SQA performed on them
@@ -145,19 +145,19 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 * Frontend HTML and CSS must be in compliance with the established [W3C standards](https://www.w3.org/standards/).
 * Browser Compatibility.
   * Bootstrap front-end framework will be used to ease cross-browser compatibility
-  * A CSS reset stylesheet will be used to ensure behavior consistency between browsers 
+  * A CSS reset stylesheet will be used to ensure behavior consistency between browsers
   * Mac OS X, Linux and Windows users should be able to display the website with full functionality in the following browsers:
   	* Internet Explorer 8.0 and 9.0 (Windows)
 	* Safari (mac)
 	* Firefox (Windows, Mac, Linux)
 	* Chrome (Windows, Mac, Linux)
-* Error and Exception Handling 
+* Error and Exception Handling
   * Error Handling.
     * Error handlers will be used to catch and respond to common HTTP errors, including:
-      *	400: Bad Request  
+      *	400: Bad Request
       * 401: Unauthorized.
       * 403: Forbidden
-      * 404: Not Found 
+      * 404: Not Found
       * 500: Internal Server Error
       * 502: Bad Gateway
       * 503: Service Unavailable
@@ -179,7 +179,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
   * Subby will use single sign-on to authenticate Users;
   * Usernames must be unique and can contain letters (A-Z), numbers (0-9), dashes (-), underscores (_), and periods (.);
   * Passwords can contain any combination of printable ASCII characters and must contain a minimum of 8 characters comprised of at least       one number and one special character  (e.g. !, @, #, $, etc.).
-  
+
    * Passwords will be automatically salted to further safeguard passwords before they are stored in the database.
 * User Access and Permissions.
    * Based on the functional requirements of Users and on security considerations, Subby will offer three permission levels:
@@ -226,8 +226,9 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 # 5. Project Testing
 ## 5.1. Testing Strategies
 * Unit testing will be done on every method that is written on each model to ensure that each model is functioning as they should be.
-* Semi-integration testing will be done by testing the controllers of each model since many cases requires working with multiple models on a single view. 
+* Integration testing will be done by testing the controllers of each model since many cases requires working with multiple models on a single view.
 * Further manual testing will be done to find any bugs or defects that may have not been originally detected.
+* GUI testing will be conducted to test characteristics such as text formatting, text boxes, buttons, lists, layout, colors, fonts, font sizes, and so on.
 
 # 6. Project Architecture
 ## 6.1. Class Diagram
@@ -264,14 +265,14 @@ As discussed in the Analysis Phase, the system consists of five packages: User P
 * **Section 2**
   * Jingchi Chen [2.1 - 2.3] [2018-07-04]
   * Ronald Lwin [2.1 - 2.7] [2018-07-14]
-  
+
 * **Section 3**
   * Sandra Sung [3.1 - 3.5] [2018-07-03]
 
 * **Section 4**
   *  Alex Kirsopp [4.1] [2018-06-20]
   *  Sarah Younes [4.1.2 - 4.1.4] [2018-07-02]
-   
+
 * **Section 5**
   *  Ronald Lwin [5.1] [2018-07-17]
 

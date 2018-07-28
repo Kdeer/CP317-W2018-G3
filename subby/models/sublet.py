@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from subby.managers.subletmanager import SubletManager
+import datetime, pytz
 
 
 class Sublet(models.Model):
@@ -17,7 +18,7 @@ class Sublet(models.Model):
 	postal_code = models.CharField(max_length=7)
 	city = models.CharField(max_length=20)
 	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(blank=True, null=True)
+	updated_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
 
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -93,8 +94,8 @@ class Sublet(models.Model):
 	def set_created_at(self, created_at):
 		self.created_at = created_at
 		return
-	def set_updated_at(self, updated_at):
-		self.updated_at = updated_at
+	def set_updated_at(self):
+		self.updated_at = pytz.utc.localize(datetime.datetime.now())
 		return
 
 

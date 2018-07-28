@@ -31,14 +31,14 @@
                     <div class="form-group">
                         <label for="listing-title">Listing Name:</label>
                         <input type="text" class="form-control" id="listing-title" name="title"
-                               aria-describedby="Listing Name" placeholder="Enter Listing Name">
+                               aria-describedby="Listing Name" placeholder="Enter Listing Name" data-toggle="popover" data-content="Please enter a title">
                         <label class="mt-2" for="listing-duration">Listing Duration (months):</label>
                         <input type="number" class="form-control" id="listing-duration" name="duration"
-                               aria-describedby="Listing Duration" min="4" max="12">
+                               aria-describedby="Listing Duration" min="4" max="12" value="4" data-toggle="popover" data-content="Please enter a duration">
                         <br>
                         <label for="pac-input">Search an address:</label>
                         <input id="pac-input" class="controls form-control" type="text"
-                               placeholder="Enter Address" autocomplete="off"/><br/>
+                               placeholder="Enter Address" autocomplete="off" data-toggle="popover" data-content="Enter a valid address"/><br/>
                         <div id="map" style="height: 250px;"></div>
                         <div id="infowindow-content">
                             <img src="" width="16" height="16" id="place-icon">
@@ -56,13 +56,13 @@
                                aria-describedby="Postal Code" placeholder="Enter Postal Code">
                         <label class="mt-2" for="price">Price:</label>
                         <input type="text" class="form-control" name="price" id="price"
-                               aria-describedby="Price" placeholder="Enter Listing Price">
+                               aria-describedby="Price" placeholder="Enter Listing Price" data-toggle="popover" data-content="Please enter a price">
                         <label class="mt-2" for="listing-description">Description:</label>
                         <textarea class="form-control" name="description" id="listing-description"
-                                  aria-describedby="Description" placeholder="Enter Description" rows="10"></textarea>
+                                  aria-describedby="Description" placeholder="Enter Description" rows="10" data-toggle="popover" data-content="Please enter a description"></textarea>
                         <label class="mt-2" for="image-upload">Upload Images:</label>
                         <input type="file" class="form-control" id="files" name="files" multiple
-                               aria-describedby="Image Upload">
+                               aria-describedby="Image Upload" data-toggle="popover" data-content="Upload some images">
                         <label class="mt-2" for="image-list">Previews:</label>
                         <output class="form-control" id="image-list" style="min-height: 100px; height: auto;"></output>
 
@@ -72,7 +72,7 @@
                         <input type="hidden" class="form-control" name="lng" id="lng"
                                aria-describedby="Longitude" placeholder="Enter Longitude">
 
-                        <input type="submit" class="btn btn-primary d-block mr-0 mt-3 float-right" value="Create"/>
+                        <input type="submit" id="create-sublet-submit" class="btn btn-primary d-block mr-0 mt-3 float-right" value="Create"/>
                     </div>
                 </form>
             </div>
@@ -81,9 +81,21 @@
 {% endblock %}
 
 {% block js %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
     {% load static %}
-    <script src="{% static 'js/FileHandling.js' %}"></script>
-    <script src="{% static 'js/MapAPI.js' %}"></script>
+
+    <script src="{% static "js/FileHandling.js" %}"></script>
+    <script src="{% static 'js/CreateSubletVerification.js' %}"></script>
+    <script src="{% static "js/MapAPI.js" %}"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_map"
             async defer></script>
 {% endblock %}

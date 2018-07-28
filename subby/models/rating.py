@@ -1,7 +1,10 @@
 from django.db import models
 from django.conf import settings
 from subby.managers.ratingmanager import RatingManager
+
+import datetime, pytz
 from . import User
+
 
 ALLOWED_REVIEW_VALS = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
 
@@ -51,8 +54,8 @@ class Rating(models.Model):
     def set_created_at(self, created_at):
         self.created_at = created_at
         return
-    def set_updated_at(self, updated_at):
-        self.updated_at = updated_at
+    def set_updated_at(self):
+        self.updated_at = pytz.utc.localize(datetime.datetime.now())
         return
 
     # Helpers

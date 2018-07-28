@@ -2,11 +2,13 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from subby.models.rating import Rating
 from django.contrib.auth import get_user_model
+from subby.decorators.loginrequiredmessage import message_login_required
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from subby.decorators.loginrequiredmessage import message_login_required
 
 User = get_user_model()
+
 
 
 def list_user_rating(request, user_id):
@@ -43,7 +45,7 @@ def list_user_rating(request, user_id):
 	
 
 
-@login_required(login_url="/signup/")
+@message_login_required
 def write_review(request):
     if request.method == 'POST':
         current = request.user.email
@@ -65,8 +67,10 @@ def update_review(request):
         rating = Rating.objects.get(id=request.POST['ratingid'])
         if float(request.POST['rating']) != rating.rating:
             rating.set_rating(float(request.POST['rating']))
+            rating.set_updated_at()
         if request.POST['comment'] != rating.comment:
             rating.set_comment(request.POST['comment'])
+
 
         rating.save()
         done = True

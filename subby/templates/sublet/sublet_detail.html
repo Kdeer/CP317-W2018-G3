@@ -46,12 +46,12 @@
                                 {% for i in rest_images %}
 								{% if forloop.counter0 == 0 %}
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" src="{{ i.url }}" alt="Slide">
+                                            <img class="d-block" src="{{ i.url }}" alt="Slide" width="400px">
                                         </div>
                                     {% endif %}
                                     {% if forloop.counter0 != 0 %}
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="{{ i.url }}" alt="Slide">
+                                            <img class="d-block" src="{{ i.url }}" alt="Slide" width="400px">
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -124,7 +124,8 @@
                                         <label for="listing-title">Listing Name:</label>
                                         <input type="text" class="form-control" id="listing-title" name="title"
                                                aria-describedby="Listing Name" placeholder="Enter Listing Name"
-                                               value="{{ object.title }}">
+                                               value="{{ object.title }}" data-toggle="popover"
+                                               data-content="Please enter a title">
                                         <label class="mt-2" for="available">Availability:</label>
                                         <select class="form-control" id="available" name="is-sold"
                                                 aria-describedby="Availability">
@@ -144,7 +145,8 @@
                                         <label for="pac-input">Search an address:</label>
                                         <input id="pac-input" class="controls form-control" type="text"
                                                placeholder="Enter Address" autocomplete="off"
-                                               value="{{ object.street_address }}"/><br/>
+                                               value="{{ object.street_address }}" data-toggle="popover"
+                                               data-content="Please enter a valid address"><br>
                                         <div id="map" style="height: 250px;"></div>
                                         <div id="infowindow-content">
                                             <img src="" width="16" height="16" id="place-icon">
@@ -168,7 +170,8 @@
                                         <label class="mt-2" for="listing-description">Description:</label>
                                         <textarea class="form-control" name="description" id="listing-description"
                                                   aria-describedby="Description" placeholder="Enter Description"
-                                                  rows="10">{{ object.description }}</textarea>
+                                                  rows="10" data-toggle="popover"
+                                                  data-content="Please enter a description">{{ object.description }}</textarea>
                                         <label class="mt-2" for="image-upload">Upload Images:</label>
                                         <input type="file" class="form-control" id="files" name="files" multiple
                                                aria-describedby="Image Upload">
@@ -184,10 +187,10 @@
                                                aria-describedby="Longitude" placeholder="Enter Longitude"
                                                value="{{ object.longitude }}">
                                         <input type="hidden" name="subletid" value="{{ object.id }}">
-                                        <button type="submit" class="btn btn-secondary d-block mr-0 mt-3">
+                                        <button type="submit" id="edit-sublet-confirm"
+                                                class="btn btn-secondary d-block mr-0 mt-3">
                                             Confirm
                                         </button>
-
                                     </div>
                                 </form>
                             </div>
@@ -210,16 +213,32 @@
                                         <input type="hidden" name="sublettitle" value="{{ object.title }}">
                                         <input type="hidden" name="subid" value="{{ object.id }}">
                                         <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="Enter Name">
+                                        <input tabindex="0" data-trigger="focus" type="text" class="form-control"
+                                               id="name" name="name"
+                                               placeholder="Enter Name" data-toggle="popover"
+                                               data-content="Please enter a name">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                               placeholder="Enter Email">
+                                        <input tabindex="0" data-trigger="focus" type="email" class="form-control"
+                                               id="email" name="email"
+                                               placeholder="Enter Email" data-toggle="popover"
+                                               data-content="Please enter an email">
                                         <label for="message">Message:</label>
                                         <textarea class="form-control" id="message" name="message"
                                                   placeholder="Message For Seller"
-                                                  rows="10"></textarea>
-                                        <button class="btn btn-secondary d-block mr-2 mt-3" type="submit">Submit</button>
+                                                  rows="10" tabindex="0" data-trigger="focus" data-toggle="popover"
+                                                  data-content="Please enter a message"></textarea>
+                                        <input type="hidden" name="grecaptcha-token" id="grecaptcha-token">
+                                        <script>
+                                            grecaptcha.ready(function () {
+                                                grecaptcha.execute('6Ledc2YUAAAAAFDCtapwGWRJmi5coy8Ue615QGO4', {action: 'contact'})
+                                                    .then(function (token) {
+                                                        $('#grecaptcha-token').val(token);
+                                                    });
+                                            });
+                                        </script>
+                                        <button class="btn btn-secondary d-block mr-2 mt-3" type="submit"
+                                                id="contact-submit-btn">Submit
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -237,19 +256,19 @@
         // Initialize and add the map
 
         function initMap() {
-            var latitude = {{ object.latitude }};
-            var longitude = {{ object.longitude }};
+            let latitude = {{ object.latitude }};
+            let longitude = {{ object.longitude }};
             // The location of Uluru
-            var street_address = {lat: latitude, lng: longitude};
+            let street_address = {lat: latitude, lng: longitude};
             // The map, centered at Uluru
-            var map = new google.maps.Map(
+            let map = new google.maps.Map(
                 document.getElementById('detailmap'), {
                     zoom: 16, center: street_address,
                     scrollwheel: false,
 
                 });
             // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({position: street_address, map: map});
+            let marker = new google.maps.Marker({position: street_address, map: map});
 
             init_map()
         }
@@ -257,10 +276,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
             integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
     {% load static %}
+    <script src="{% static 'js/SubletDetailVerification.js' %}"></script>
     <script src="{% static 'js/MapAPI.js' %}"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCurefBmArMbo3xXJpvxk3sG1q1MPSHsCc&callback=initMap">

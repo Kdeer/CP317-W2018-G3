@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    {% block styles %}{% endblock %}
+
+    <script src='https://www.google.com/recaptcha/api.js?render=6Ledc2YUAAAAAFDCtapwGWRJmi5coy8Ue615QGO4'></script>
 </head>
 
 <body>
@@ -32,7 +35,12 @@
         <div class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <ul class="navbar-nav">
-                    <li class=" nav-item">
+                    {% if user.is_admin %}
+                        <li class="nav-item">
+                            <a class="nav-link main-nav-item" id="" href="{% url 'subby:user_index' %}">Admin</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
                         <a class="nav-link main-nav-item" id="" href="{% url 'subby:account_home' %}">Account</a>
                     </li>
                     <li class="nav-item">
@@ -58,15 +66,14 @@
     </div>
 </nav>
 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
 <div class="container-fluid">
     {% block content %}
-        {% if login_error %}
-            <script type="text/javascript">
-                $(function () {
-                    $('#login-modal').modal('show');
-                });
-            </script>
-        {% endif %}
         <div class="row">
             <div class="col"></div>
             <div class="col-xl-10">
@@ -84,6 +91,25 @@
                 </form>
             </div>
             <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if images.count > 0 %}
+                    <div id="button-holder">
+                        <button class="scroll-btn left-scroll"></button>
+                        <div id="image-gallery">
+                            {% for image in images %}
+                                <div class="slide">
+                                    <a href="{% url 'subby:SubletDetail' image.sublet.id %}"><img
+                                            src="{{ image.image.url }}"
+                                            style="max-height: 600px; max-width: 650px;"/></a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="scroll-btn right-scroll"></button>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     {% endblock %}
 </div>
@@ -124,7 +150,9 @@
                                     </div>
                                 </div>
                                 <input type="email" class="form-control" id="email-box" name="username"
-                                       aria-describedby="emailHelp" placeholder="Enter email">
+                                       aria-describedby="emailHelp" placeholder="Enter email"
+                                       tabindex="0" data-trigger="focus" data-toggle="popover"
+                                       data-content="Please enter a valid email">
                             </div>
                             <small id="emailHelp" class="form-text text-muted">UW/WLU emails required</small>
                         </div>
@@ -186,7 +214,8 @@
                                     </div>
                                 </div>
                                 <input type="email" class="form-control" id="su-email-box" name="username"
-                                       aria-describedby="emailHelp" placeholder="Enter email">
+                                       aria-describedby="emailHelp" placeholder="Enter email"
+                                       tabindex="0" data-trigger="focus" data-toggle="popover">
                             </div>
                             <small id="emailHelp" class="form-text text-muted">UW/WLU emails required</small>
                         </div>
@@ -199,7 +228,8 @@
                                     </div>
                                 </div>
                                 <input type="password" class="form-control" id="su-pw-box" placeholder="Password"
-                                       name="password">
+                                       name="password" tabindex="0" data-trigger="focus" data-toggle="popover"
+                                       data-content="Please enter a valid password (6 - 16 characters, at least 1 number & special character)">
                             </div>
                         </div>
                         <div class="form-group">
@@ -212,13 +242,23 @@
                                 </div>
                                 <input type="password" class="form-control" id="pw-confirm-box"
                                        placeholder="Confirm Password"
-                                       name="password-confirm">
+                                       name="password-confirm" data-toggle="popover"
+                                       data-content="Passwords must match">
                             </div>
                         </div>
+                        <input type="hidden" name="recaptcha-token" id="recaptcha-token">
+                        <script>
+                            grecaptcha.ready(function () {
+                                grecaptcha.execute('6Ledc2YUAAAAAFDCtapwGWRJmi5coy8Ue615QGO4', {action: 'signup'})
+                                    .then(function (token) {
+                                        $('#recaptcha-token').val(token);
+                                    });
+                            });
+                        </script>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Sign up</button>
+                        <button type="submit" class="btn btn-primary" id="signup-submit-btn">Sign up</button>
                     </div>
                 </form>
             </div>
@@ -229,8 +269,12 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script> -->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -240,10 +284,52 @@
             crossorigin="anonymous"></script>
     <script src="{% static 'js/LoginModal.js' %}"></script>
     <script src="{% static 'js/EditAccountInformation.js' %}"></script>
-    <script src="{% static 'js/MapAPI.js' %}"></script>
+
+    <script src="{% static 'js/SmoothScrolling.js' %}"></script>
+    <script src="{% static "js/MapAPI.js" %}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_searchbar"
             async defer></script>
+
+    <script type="text/javascript">
+        $(function () {
+            {% if login_error %}
+                $('#login-modal').modal('show');
+            {% endif %}
+            {% if signup_error %}
+                $('#signup-modal').modal('show');
+            {% endif %}
+        });
+    </script>
+
+    <script type="text/javascript">
+        function checkEmail() {
+            $('#su-email-box').popover('hide');
+            $.get('{% url 'subby:signup' %}', {username: $('#su-email-box').val()},
+                function (data) {
+                    if (data === "True") {
+                    } else {
+                        $('#su-email-box').popover({
+                            content: "The following email already exists in our database!",
+                            html: true,
+                            trigger: "manual",
+                            placement: "right"
+                        }).popover('toggle');
+                    }
+                });
+        }
+
+        function onChange() {
+            $("#su-email-box").change(function () {
+                checkEmail();
+            });
+        }
+
+        $(document).ready(onChange);
+    </script>
+
+
 {% block js %}
+
 {% endblock %}
 
 </body>

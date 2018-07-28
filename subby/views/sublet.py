@@ -1,9 +1,11 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect, get_object_or_404
+from subby.decorators.loginrequiredmessage import message_login_required
 from django.contrib.auth.decorators import login_required
 from subby.models.sublet import Sublet
 from subby.models.image import SubletImage
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -78,7 +80,7 @@ def search(request):
         return render(request, 'application/base.html')
 
 
-@login_required(login_url="/signup/")
+@message_login_required
 def create_sublet(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['street_address'] and request.POST['city'] and request.POST[
@@ -111,36 +113,49 @@ def update_sublet(request):
         sublet = Sublet.objects.get(id=request.POST['subletid'])
         if request.POST['title'] != sublet.get_sublet_title():
             sublet.set_sublet_title(request.POST['title'])
+            sublet.set_updated_at()
         if request.POST['duration'] != sublet.get_duration():
             sublet.set_duration(request.POST['duration'])
+            sublet.set_updated_at()
         if request.POST['is-sold'] == 'Not Sold' and sublet.get_is_sold():
             sublet.set_is_sold(False)
+            sublet.set_updated_at()
         if request.POST['is-sold'] == 'Sold' and not sublet.get_is_sold():
             sublet.set_is_sold(True)
+            sublet.set_updated_at()
         if request.POST['street_address'] != sublet.get_street_address():
             sublet.set_street_address(request.POST['street_address'])
         if request.POST['city'] != sublet.get_city():
             sublet.set_city(request.POST['city'])
+            sublet.set_updated_at()
         if request.POST['postal_code'] != sublet.get_postal_code():
             sublet.set_postal_code(request.POST['postal_code'])
+            sublet.set_updated_at()
         if request.POST['price'] != sublet.get_price():
             sublet.set_price(request.POST['price'])
+            sublet.set_updated_at()
         if request.POST['description'] != sublet.get_description():
             sublet.set_description(request.POST['description'])
+            sublet.set_updated_at()
         if request.POST['lat'] != sublet.get_lat():
             sublet.set_lat(request.POST['lat'])
+            sublet.set_updated_at()
         if request.POST['lng'] != sublet.get_lng():
             sublet.set_lng(request.POST['lng'])
+            sublet.set_updated_at()
         if request.FILES.getlist('files'):
             image_list = request.FILES.getlist('files')
+            sublet.set_updated_at()
             if len(image_list) > 0:
                 for image in image_list:
                     sublet_image = SubletImage(sublet=sublet)
                     sublet_image.image = image
                     sublet_image.save()
         sublet.save()
+        messages.add_message(request, messages.INFO, 'You have successfully updated your listing.')
         return redirect('subby:SubletDetail', sublet.get_sublet_id())
     else:
+        messages.add_message(request, messages.INFO, 'Something went wrong!')
         return redirect('subby:SubletDetail', request.POST['subletid'])
 
 
