@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="jumbotron jumbo-container" style="min-height: 90vh; max-height: 90vh; overflow-y: scroll;">
 		
-		<h2 class="hello" >Your review for {{ lister.email }} 
+		<h2 class="hello" >Your review for {{ lister.username }} 
 			<a class="btn btn-secondary float-right" href="{% url 'subby:RatingList' user_id=rating.reviewed_user_id %}">View All Reviews
 			</a>
 		</h2><br />
@@ -22,22 +22,13 @@
 						</input>
 					</h5>
 					
-					<button id="myBtn" class="btn btn-danger float-right mr-2">Delete</button>
-					<div id="myModal" class="modal">
-						<!-- Modal content -->
-						<div class="modal-content bg-dark" style="width:40%">
-							<p>Are you sure to delete your review?</p>
-							<div class="row">
-								<a class="close btn btn-primary offset-4" href="{% url 'subby:delete_review' rating_id=rating.id reviewed_user_id=rating.reviewed_user_id%}"> Yes
-								</a>
-								<a class="close btn btn-secondary offset-1">
-									No
-								</a>
-								<!-- <span class="close">&times;</span> -->
-							</div>
-						</div>
-						
-					</div>
+					<button class="btn btn-danger float-right mr-2" type="button"
+					data-toggle="modal" data-target="#delete-modal"
+					aria-controls="deletingToggler" aria-expanded="false"
+					aria-label="Toggle navigation">Delete
+					</button>
+					<!-- <button id="myBtn" class="btn btn-danger float-right mr-2">Delete</button> -->
+
 					
 					<fieldset class="rating float-left" disabled>
 						{% if rating.rating == 5 %}
@@ -170,6 +161,30 @@
 	</div>
 </div>
 
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label"
+aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content bg-dark">
+			<div class="modal-header">
+				<div>
+					<h4 class="text-white">Delete the Review?</h4>
+					
+				</div>
+			</div>
+			<form method="POST" action="{% url 'subby:delete_review' rating_id=rating.id reviewed_user_id=rating.reviewed_user_id%}">
+				{% csrf_token %}
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+					
+					<button type="submit" class="btn btn-primary" id="submit_button">Yes</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 
 {% endblock %}		
 
@@ -198,32 +213,4 @@
 	}
 </script>
 
-
-<script>
-	// Get the modal
-	var modal = document.getElementById('myModal');
-	
-	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
-	
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-	
-	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-		modal.style.display = "block";
-	}
-	
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
-	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-</script>
 {% endblock %}

@@ -25,6 +25,10 @@ html, body {
     margin: 10px 5px 0 0;
 }
 
+.green-border {
+  border: 2px solid green !important;
+}
+
 .main-logo-img {
     margin-top: 5%;
     margin-bottom: 5%;
@@ -168,8 +172,8 @@ html, body {
 
 .card-body {
     min-height: 150px;
-    max-height: 150px;
-    height: auto;
+    max-height: 170px;
+    /* height: auto; */
     overflow-y: auto;
 }
 
@@ -246,40 +250,147 @@ html, body {
 
 
 
-
-/* css for rating_detail */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-	margin-top: 200px;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 200px;
-	/* height: 200px; */
-
-}
-
-The Close Button
-
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: progress;
 }
+
+/* social buttons design */
+.sb {
+  display: inline-block;
+  height: 40px;
+  color: white !important;
+  font-family: sans-serif;
+  padding-right: 15px;
+  font-size: 15px;
+  text-decoration: none;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.sb::before {
+  font-family: "Font Awesome 5 Brands";
+  text-align: center;
+  width: 40px;
+  height: 100%;
+  display: inline-block;
+  font-size: 25px;
+  margin-right: 10px;
+  line-height: 40px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+}
+
+.sb:hover {
+  text-decoration: none;
+  color: white !important;
+}
+.sb.sb-nb {
+  border: 1px solid transparent;
+}
+.sb.sb-ct {
+  text-align: center;
+}
+.sb.sb-fw {
+  width: 220px;
+}
+
+.sb-google {
+  background-color: #F63D27;
+  border-color: #e12009;
+}
+.sb-google::before {
+  background-color: #F63D27;
+  content: "\f0d5";
+}
+.sb-google:hover::before {
+  background-color: #f86958;
+}
+.sb-google:hover {
+  background-color: #f86958;
+}
+
+
+
+/* Favourite list page styling ------------------------------*/
+/* Favourite button panel  properties*/
+.favourite-btn {
+    /* Title text properties */
+    color: black; /* Text Colour */
+    text-align: center;
+
+    background-color: #89b4f9; /* Initial button background colour */
+    padding: 50px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: solid;
+    border-width: 1px;
+    border-radius: 12px;
+
+    transition: 0.6s;
+    outline: none;
+
+}
+
+
+/* Drop down info panel styling and contents*/
+.info-panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0px;
+    overflow: hidden;
+
+    /* Orders the layout of the favourite info boxes */
+    display: flex;
+    flex-direction: column;
+
+    transition: max-height 0.3s ease-out;
+}
+
+/* Contents*/
+.description {
+    width: 70%;
+    margin-left: 15%;
+
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-color: #89b4f9;
+    border-width: 1px;
+
+}
+
+
+.control-panel {
+    width: 70%;
+    margin-left: 15%;
+
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-color: #89b4f9;
+    border-width: 1px;
+}
+
+
+/* Favourite button panel properties on mouse hover and button click */
+.active, .favourite-btn:hover {
+    background-color: #4286f4;
+}
+
+/* -------------------------------------------- */
+
+
+
+
+.copy_right {
+	text-align:center;
+	font-weight: bold;
+}
+
+
+
+
+
 

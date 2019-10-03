@@ -21,7 +21,7 @@ class Sublet(models.Model):
 	updated_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
 
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sublets', on_delete=models.CASCADE)
 
 	def summary(self):
 		if len(self.description) > 150:
@@ -98,6 +98,8 @@ class Sublet(models.Model):
 		self.updated_at = pytz.utc.localize(datetime.datetime.now())
 		return
 
-
-
 		
+	def pub_date_pretty(self):
+		return self.created_at.strftime('%b %e, %Y')
+
+

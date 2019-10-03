@@ -1,0 +1,81 @@
+{% extends 'application/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="jumbotron jumbo-container">
+		<div class="container">
+			
+			<button class="btn btn-secondary" type="button"
+			data-toggle="modal" data-target="#report-modal"
+			aria-controls="ratingToggler" aria-expanded="false"
+			aria-label="Toggle navigation">Report User
+			</button>
+			
+			<!-- 		<div class="collapse" id="reportToggler">
+				<div class="bg-dark p-4 mt-2" style="border-radius: 5px;">
+				<h4 class="text-white">Report Form</h4>
+				<span class="text-muted">Please select the issue of the post or user and give the description</span>
+				<hr class="my-4">
+				
+				
+				<form method="POST" action="{% url 'subby:create_report' user_id=user_id  sublet_id=sublet_id %}">
+				{% csrf_token %}
+				<h3 style="color:white;">Issues:</h3>
+				<input type="radio" name="issue" value=0><label style="color:white">Information not matched</label><br />
+				<input type="radio" name="issue" value=1><label style="color:white">Spam Postings</label><br />
+				<input type="radio" name="issue" value=2><label style="color:white">User send spam emails</label><br />
+				<input type="radio" name="issue" value=3><label style="color:white">Other issues</label><br />
+				<hr class="my-4">
+				
+				<h4 class="mb-2" style="color:white">Description:</h4>
+				<textarea class="mb-2" cols="100" rows="5" name="description"></textarea>
+				
+				<button type="submit" class="btn btn-secondary d-block">Confirm</button>
+				</form>
+				
+				</div>
+			</div> -->
+			
+		    <div class="modal fade" id="report-modal" tabindex="-1" role="dialog" aria-labelledby="report-modal-label"
+			aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content bg-dark">
+						<div class="modal-header">
+							<div>
+								<h4 class="text-white">File a Report</h4>
+								<span class="text-muted">Select the issue of the post then describe it below.</span>
+							</div>
+						</div>
+						<form method="POST" action="{% url 'subby:create_report' user_id=user_id  sublet_id=sublet_id %}">
+							{% csrf_token %}
+							<div class="modal-body">
+
+									<input type="hidden" name="reviewedid" value="{{ lister.id }}">
+										<h3 style="color:white;">Issues:</h3>
+										<input type="radio" name="issue" value=0><label style="color:white">Information not matched</label><br />
+										<input type="radio" name="issue" value=1><label style="color:white">Spam Postings</label><br />
+										<input type="radio" name="issue" value=2><label style="color:white">User send spam emails</label><br />
+										<input type="radio" name="issue" value=3><label style="color:white">Other issues</label><br />
+										
+										<h4 class="mb-2" style="color:white">Description:</h4>
+
+									<textarea class="form-control" id="message" name="description"
+                                      placeholder="Please provide detailed description about your report"
+                                      rows="8"></textarea>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									
+									<button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+									
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+{% endblock %}

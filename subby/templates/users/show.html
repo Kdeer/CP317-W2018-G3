@@ -1,14 +1,65 @@
 {% extends 'application/base.html' %}
-
 {% block content %}
-    {% if user %}
-        <div>
-            Display user<br /><br />
-            First name: {{ user.first_name }}<br />
-            Last name: {{ user.last_name }}<br />
-            Email: {{ user.email }}<br />
+
+    <div class="container">
+
+        <div class="jumbotron jumbo-container">
+            <div class="container">
+                <h1 class="display-4">User: {{ user.email }}</h1>
+                <a class="btn btn-secondary" href="{% url 'subby:user_sublets' user_id=user.id %}">User Sublets</a>
+                <a class="btn btn-secondary" href="{% url 'subby:RatingList' user_id=user.id %}">User Ratings</a>
+
+                <hr class="my-4">
+
+                <fieldset class="edit-disabled-fieldset" disabled>
+                    <div class="form-group">
+                        <label for="account-page-email">Email:</label>
+                        <input type="email" id="account-page-email" name="email" class="form-control"
+                                placeholder="Email"
+                                value="{{ user.email }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="account-page-fn">First Name:</label>
+                        <input type="text" id="account-page-fn" name="first" class="form-control"
+                                placeholder="First Name"
+                                value="{{ user.first_name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="account-page-ln">Last Name:</label>
+                        <input type="text" id="account-page-ln" name="last" class="form-control"
+                                placeholder="Last Name"
+                                value="{{ user.last_name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="account-page-pn">Phone Number:</label>
+                        <input type="text" id="account-page-pn" name="phone" class="form-control"
+                                placeholder="Phone Number"
+                                value="{{ user.phone_number }}">
+                    </div>
+                </fieldset>
+
+                <fieldset class="perm-disabled-fieldset" disabled>
+                    <div class="form-group">
+                        <label for="account-page-creation">Creation Date:</label>
+                        <input type="text" id="account-page-creation" class="form-control"
+                                placeholder="Creation Date"
+                                value="{{ user.created_at }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="account-page-updated">Last Updated:</label>
+                        <input type="text" id="account-page-updated" class="form-control" placeholder="Last Updated"
+                                value="{{ user.updated_at }}">
+                    </div>
+                </fieldset>
+
+                {% csrf_token %}
+                <button class="btn lock-account-btn {{ btn_class }}"
+                    data-user-locked="{{ user.is_active }}"
+                    data-lock-url="{% url 'subby:user_lock_account' user_id=user.id %}">
+                    {{ btn_text }}
+                </button>
+            </div>
         </div>
-    {% else %}
-        <p>Invalid user ID</p>
-    {% endif %}
+    </div>
+
 {% endblock %}

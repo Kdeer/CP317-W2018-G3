@@ -62,7 +62,15 @@ function init_map() {
 
 function init_searchbar() {
     let input = document.getElementById('sublet-search');
+
     let autocomplete = new google.maps.places.Autocomplete(input);
+
+    let circle = new google.maps.Circle({
+        center: {lat: 43.4643, lng: -80.5204},
+        radius: 10
+    });
+
+    autocomplete.setBounds(circle.getBounds());
 
     autocomplete.setFields(
         ['address_components', 'geometry', 'icon', 'name']);

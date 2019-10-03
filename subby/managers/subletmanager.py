@@ -45,3 +45,9 @@ class SubletManager(models.Manager):
 		sublet.user = user
 		sublet.save()
 		return sublet
+		
+	def delete_sublet(self, sublet_id):
+		sublet = self.model.objects.get(id=sublet_id)
+		sublet.delete()
+		return
+		

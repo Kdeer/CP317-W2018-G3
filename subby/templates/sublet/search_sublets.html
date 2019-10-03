@@ -1,112 +1,156 @@
 {% extends 'application/base.html' %}
 
+
+{% block search_bar %}
+<div class="nav-item col-md-6">
+	<form action="{% url 'subby:search' %}" method="POST">
+		{% csrf_token %}
+		<div class="input-group">
+			<input class="form-control" type="search" placeholder="Search" aria-label="Search"
+			id="sublet-search" name="search_address">
+			<input type="hidden" id="search-lat" name="lat">
+			<input type="hidden" id="search-lng" name="lng">
+			<input type="hidden" id="search-prox" name="proximity" value="5">
+			<span class="input-group-btn">
+				<button class="btn btn-secondary search-btn ml-3" type="submit">Search</button>
+			</span>
+		</div>
+	</form>
+</div>
+{% endblock %}
+
 {% block content %}
-    <div class="jumbotron jumbo-container">
-        <div class="container-fluid search-sublet-main-container">
-            <div class="row">
-                <div class="col">
-                    <h2>
-                        Search Results: {{ place.count }} results found
-                    </h2>
-                    <button type="button" data-toggle="collapse" data-target="#filterToggler"
-                            class="btn btn-secondary btn-sm" aria-controls="filterToggler" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        Advanced filters
-                    </button>
-                    <div class="collapse" id="filterToggler">
-                        <div class="bg-dark p-4 mt-2" style="border-radius: 5px;">
-                            <h6 class="text-white">Advanced Filters</h6>
-                            <form action="{% url 'subby:search' %}" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group text-light">
-                                    <input type="hidden" name="lat" value="{{ lat }}">
-                                    <input type="hidden" name="lng" value="{{ lng }}">
-                                    <label for="prox">Proximity (km):</label>
-                                    <input class="form-control" name="proximity" id="prox" type="number" min="1"
-                                           value="{{ prox }}">
-                                    <button class="btn btn-secondary btn-sm mt-3" type="submit">Filter</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="container-fluid search-container">
-                        {% for p in place %}
-                            <div class="card gallery" style="width: 18rem;">
-                                {% load index %}
-                                <img class="card-img-top" src="{{ cover|index:forloop.counter0 }}" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ p.title }}</h5>
-                                    <p class="card-text">{{ p.description }}</p>
-                                </div>
-                                <div class="card-footer"><a href="{% url 'subby:SubletDetail' p.id %}"
-                                                            class="btn btn-primary d-block mx-auto view-listing-btn">View
-                                    Listing</a></div>
-                                <div class="card-footer text-center text-muted">${{ p.price }} per month</div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="col">
-                    <div id="map" style="min-height: 100%; height: auto;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+<div class="jumbotron jumbo-container">
+	<!-- <div class="container-fluid search-sublet-main-container"> -->
+	<div class="row">
+		<div class="col-7">
 
-{% block js %}
-    <script>
-        function init_searchmap() {
+			<!-- <div class="container-fluid search-container"> -->
+			<h2>
+				Search Results: {{ place.count }} results found
+			</h2>
+			<button type="button" data-toggle="collapse" data-target="#filterToggler"
+			class="btn btn-secondary btn-sm" aria-controls="filterToggler" aria-expanded="false"
+			aria-label="Toggle navigation">
+				Advanced filters
+			</button>
 
-            let myOptions = {
-                center: new google.maps.LatLng({{ lat }}, {{ lng }}),
-                zoom: 17,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+			<div class="collapse" id="filterToggler">
+				<div class="bg-dark p-4 mt-2" style="border-radius: 5px;">
+					<h6 class="text-white">Advanced Filters</h6>
+					<form action="{% url 'subby:search' %}" method="POST">
+						{% csrf_token %}
+						<div class="form-group text-light">
+							<input type="hidden" name="lat" value="{{ lat }}">
+							<input type="hidden" name="lng" value="{{ lng }}">
+							<label for="prox">Proximity within(km):</label>
+							<input class="form-control" name="proximity" id="prox" type="number" min="1"
+							value="{{ prox }}">
+							<label for="duration">Duration (months):</label>
+							<input class="form-control" name="duration" id="duration" type="number" min="1" max="12"
+							value="{{ duration }}">
+							<label for="price">price (<=):</label>
+								<input class="form-control" name="price" id="price" type="number" value="{{ price }}">
+								<button class="btn btn-secondary btn-sm mt-3" type="submit">Filter</button>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="album py5 bg-light mt-3">
+				<div class="row">
 
-            };
-            let map = new google.maps.Map(document.getElementById("map"),
-                myOptions);
-            let bounds = new google.maps.LatLngBounds();
-            setMarkers(map, bounds)
+					<div class="row col-7">
+						{% for p in place %}
+						<div class="col-sm-8 col-md-6 col-lg-4">
 
-        }
+							<div class="card mt-3 ml-1" style="cursor:pointer;" id="sublet{{ p.id }}" onclick="window.location='{% url 'subby:SubletDetail' p.id %}';">
+								{% load index %}
+								<img class="card-img-top" src="{{ cover|index:forloop.counter0 }}" alt="">
+								<div class="card-body" >
+									<h6 class="card-title">{{ p.title }}, {{ p.duration }} months</h6>
+									<p class="card-title">{{ p.street_address }} </p>
+									<h6 class="card-title">{{ p.city }}, ${{ p.price}}/Month</h6>
+									<h6 class="card-title">Created at: {{ p.pub_date_pretty }}</h6>
+									<br />
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
 
 
-        function setMarkers(map, bounds) {
+					<div class="col-5 mt-3">
+						<div id="map" style="min-height: 100%; height: auto;"></div>
+					</div>
+				</div>
+				<br />
+			</div>
+			<br />
+		</div>
+		<br />
 
-            {%  for p in place %}
-                latlngset = new google.maps.LatLng({{ p.latitude }}, {{ p.longitude }});
-                marker = new google.maps.Marker({
-                    map: map, title: '{{ p.title }}', position: latlngset
-                });
-                map.setCenter(marker.getPosition());
 
-                content = "Listing Name: {{ p.title }}" + '<br>' + "Address: {{ p.street_address }}" + '<br>' + " City: {{ p.city }}" + '<br>' +
-                    'Price: ${{ p.price }}/mo';
 
-                infowindow = new google.maps.InfoWindow();
 
-                google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
-                    return function () {
-                        infowindow.setContent(content);
-                        infowindow.open(map, marker);
-                    };
-                })(marker, content, infowindow));
+		{% endblock %}
 
-                bounds.extend(marker.getPosition());
+		{% block js %}
+		<script>
+			function init_searchmap() {
 
-                map.fitBounds(bounds);
-            {% endfor %}
+				let myOptions = {
+					center: new google.maps.LatLng({{ lat }}, {{ lng }}),
+					zoom: 14,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
 
-        }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-            crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_searchmap"
-            async defer></script>
-{% endblock %}
+				};
+				let map = new google.maps.Map(document.getElementById("map"),
+				myOptions);
+				let bounds = new google.maps.LatLngBounds();
+				setMarkers(map, bounds)
+
+			}
+
+
+			function setMarkers(map, bounds) {
+
+				{%  for p in place %}
+				latlngset = new google.maps.LatLng({{ p.latitude }}, {{ p.longitude }});
+				marker = new google.maps.Marker({
+					map: map, title: '{{ p.title }}', position: latlngset
+				});
+				map.setCenter(marker.getPosition());
+
+				content = "Listing Name: <a href='{% url 'subby:SubletDetail' p.id %}'>{{ p.title }}</a>" + '<br>' + "Address: {{ p.street_address }}" + '<br>' + " City: {{ p.city }}" + '<br>' +
+				'Price: ${{ p.price }}/mo';
+
+				infowindow = new google.maps.InfoWindow();
+
+				google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+					return function () {
+						var sublet = document.getElementById('sublet{{ p.id }}');
+						{% for p in place %}
+						document.getElementById('sublet{{p.id}}').style.backgroundColor = 'white';
+						{% endfor %}
+						sublet.style.backgroundColor = 'lightblue';
+						window.location.href="#sublet{{ p.id }}";
+						infowindow.setContent(content);
+						infowindow.open(map, marker);
+
+					};
+				})(marker, content, infowindow));
+
+				bounds.extend(marker.getPosition());
+
+				map.fitBounds(bounds);
+				{% endfor %}
+
+			}
+		</script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_searchmap"
+		async defer></script>
+
+	{% endblock %}

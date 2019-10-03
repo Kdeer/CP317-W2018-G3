@@ -8,7 +8,7 @@
                 <p class="lead">Enter the following information</p>
                 <hr class="my-4">
                 {% if create_sublet_error %}
-                    <div class="alert alert-danger fade show" role="alert" id="error-container">
+                    <div class="alert alert-danger fade show" role="alert" id="error-container" style="height:120px;">
                         <h4 class="alert-heading">Error</h4>
                         <p>{{ create_sublet_error }}</p>
                         <button type="button" class="close" onclick="$('.alert').hide()" aria-label="Close">
@@ -16,16 +16,7 @@
                         </button>
                     </div>
                 {% endif %}
-                {% if success %}
-                    <div class="alert alert-success fade show" role="alert" id="success-container">
-                        <h4 class="alert-heading">Listing Posted</h4>
-                        <p>Your listing was successfully posted!</p>
-                        <a class="btn btn-secondary" href="{% url 'subby:SubletList' %}">View Your Posts</a>
-                        <button type="button" class="close" onclick="$('.alert').hide()" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                {% endif %}
+
                 <form method="POST" action="{% url 'subby:create_sublet' %} " enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
@@ -34,7 +25,7 @@
                                aria-describedby="Listing Name" placeholder="Enter Listing Name" data-toggle="popover" data-content="Please enter a title">
                         <label class="mt-2" for="listing-duration">Listing Duration (months):</label>
                         <input type="number" class="form-control" id="listing-duration" name="duration"
-                               aria-describedby="Listing Duration" min="4" max="12" value="4" data-toggle="popover" data-content="Please enter a duration">
+                               aria-describedby="Listing Duration" min="1" max="12" value="1" data-toggle="popover" data-content="Please enter a duration">
                         <br>
                         <label for="pac-input">Search an address:</label>
                         <input id="pac-input" class="controls form-control" type="text"
@@ -50,16 +41,16 @@
                                aria-describedby="Street Address" placeholder="Enter Address">
                         <label class="mt-2" for="city">City:</label>
                         <input type="text" class="form-control" name="city" id="city"
-                               aria-describedby="City Name" placeholder="Enter City Name">
+                               aria-describedby="City Name" placeholder="Enter City Name (Waterloo or Kitchener)" data-toggle="popover" data-content="City has to be Waterloo or Kitchener">
                         <label class="mt-2" for="postal_code">Postal Code:</label>
                         <input type="text" class="form-control" name="postal_code" id="postal_code"
                                aria-describedby="Postal Code" placeholder="Enter Postal Code">
-                        <label class="mt-2" for="price">Price:</label>
+                        <label class="mt-2" for="price">Price/Month:</label>
                         <input type="text" class="form-control" name="price" id="price"
                                aria-describedby="Price" placeholder="Enter Listing Price" data-toggle="popover" data-content="Please enter a price">
                         <label class="mt-2" for="listing-description">Description:</label>
                         <textarea class="form-control" name="description" id="listing-description"
-                                  aria-describedby="Description" placeholder="Enter Description" rows="10" data-toggle="popover" data-content="Please enter a description"></textarea>
+                                  aria-describedby="Description" placeholder="Please enter a description as detailed as possible, including furnitures, nearby facilitates, bus routes, beg/end of the sublet, etc." rows="10" data-toggle="popover" data-content="Please enter a description."></textarea>
                         <label class="mt-2" for="image-upload">Upload Images:</label>
                         <input type="file" class="form-control" id="files" name="files" multiple
                                aria-describedby="Image Upload" data-toggle="popover" data-content="Upload some images">
@@ -92,11 +83,13 @@
             crossorigin="anonymous"></script>
     {% load static %}
 
-    <script src="{% static "js/FileHandling.js" %}"></script>
+    <script src="{% static 'js/FileHandling.js' %}"></script>
     <script src="{% static 'js/CreateSubletVerification.js' %}"></script>
-    <script src="{% static "js/MapAPI.js" %}"></script>
+    <script src="{% static 'js/MapAPI.js' %}"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_map"
             async defer></script>
+			
+
 {% endblock %}
 

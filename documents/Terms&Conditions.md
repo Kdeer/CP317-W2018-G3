@@ -1,4 +1,3 @@
-
  **__Subby’s Terms and Conditions Policy__**
 
 All  prospective Subby Users will be obligated to acknowledge they understand and will abide by the terms and conditions laid out in the “Agreement” form before a User account is activated.

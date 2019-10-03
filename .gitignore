@@ -9,15 +9,12 @@ include/*
 lib/*
 pip-selfcheck.json
 
-# Ignore coverage stuff
-.coverage
-htmlcov/*
-
 # Yay JS
 node_modules/
 
 # Ignore editor-specific cruft
 .vscode/
+.idea/
 
 # Ignore media folders
 subby_project/media/*

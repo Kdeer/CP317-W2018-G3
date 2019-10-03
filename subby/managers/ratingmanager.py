@@ -24,16 +24,18 @@ class RatingManager(models.Manager):
 		
        return
 		
-    def get_ratings(self):
-      qs = self.get_queryset()
-      qs = qs.annotate(score=Sum('rating'))
-      total_rating = 0
-      rating_count = 0
-      for rate in qs:
-        total_rating += rate.rating
-        rating_count += 1
-      if rating_count != 0:
-        avg_rate = total_rating / rating_count
-      else:
-        avg_rate = 0
-      return avg_rate
+	#####bad code
+    # def get_avg_ratings(self):
+      # qs = self.get_queryset()
+      # qs = qs.annotate(score=Sum('rating'))
+      # total_rating = 0
+      # rating_count = 0
+      # for rate in qs:
+        # total_rating += rate.rating
+        # rating_count += 1
+      # if rating_count != 0:
+        # avg_rate = total_rating / rating_count
+      # else:
+        # avg_rate = 0
+      # print(avg_rate)
+      # return avg_rate

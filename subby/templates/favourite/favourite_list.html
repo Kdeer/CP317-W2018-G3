@@ -1,0 +1,65 @@
+{% extends 'application/base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+	<div class="jumbotron jumbo-container" style="min-height: 90vh;">
+		<div class="container">
+			<h2>My Favorite List</h2>
+			{% if fav_list|length > 0%}			
+			<br>
+			{% for fav in fav_list %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div onclick="window.location='{% url 'subby:SubletDetail' fav.sublet.id %}';"
+						style="cursor:pointer;">
+							<h4 id="sublet_title">{{ fav.sublet.title }}</h4>
+							{% for i in image_list %}
+								{% if i.sublet.id == fav.sublet.id %}
+								<img src="{{ i.image.url }}" class="img-fluid" height="200"
+								width="200"/>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-3 mt-1">
+						<h5>Address</h5>
+						<p>{{ fav.sublet.street_address }}, {{ fav.sublet.city }}</p>
+						<h5>Rent</h5>
+						<p>${{ fav.sublet.price }}</p>
+					</div>
+					<div class="col-md-2 mt-1">
+						<h5>Description</h5>
+						<p>{{ fav.sublet.summary }}</p>
+						<h5>Offered By</h5>
+						<p style="color:green;">{{ fav.sublet.user.username }}</p>
+					</div>
+					<div class="col-md-1 mt-1">
+						<a href="{% url 'subby:unfav_sublet' fav_id=fav.id %}" class="btn btn-danger">Unfavorite</a>
+					</div>
+					
+				</div>
+				<hr>
+			</div>
+			{% endfor %}
+			{% else %}
+			<p>There are no favourites.</p>
+			
+			{% endif %}
+			<br>
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <!-- Bootstrap CSS -->
@@ -31,13 +30,24 @@
         </button>
     </div>
 
+
+	{% block search_bar %}
+    {% if request.get_full_path == "/sublets/search" %}
+
+    {% endif %}
+	{% endblock %}
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <ul class="navbar-nav">
                     {% if user.is_admin %}
-                        <li class="nav-item">
-                            <a class="nav-link main-nav-item" id="" href="{% url 'subby:user_index' %}">Admin</a>
+                        <li class="dropdown nav-item">
+                            <a class="nav-link main-nav-item dropdown-toggle" id="dropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'subby:user_index' %}">User List</a>
+                                <a class="dropdown-item" href="{% url 'subby:report_list' %}">Report List</a>
+                            </div>
                         </li>
                     {% endif %}
                     <li class="nav-item">
@@ -72,6 +82,8 @@
     {% endfor %}
 {% endif %}
 
+<!-- <div class="alert ajax-alert" role="alert" style="display: none;" id="message_alert"></div> -->
+
 <div class="container-fluid">
     {% block content %}
         <div class="row">
@@ -82,13 +94,20 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                               id="sublet-search">
+                               id="sublet-search" name="search_address">
                         <input type="hidden" id="search-lat" name="lat">
                         <input type="hidden" id="search-lng" name="lng">
                         <input type="hidden" id="search-prox" name="proximity" value="5">
-                        <button class="btn btn-secondary search-btn d-block mx-auto" type="submit">Search</button>
+                        <div class="row">
+                            <button class="btn btn-secondary search-btn d-block offset-5 mt-3" type="submit"
+                                    style="height:90%;">Search
+                            </button>
+                            <a class="btn btn-secondary d-block mt-3" style="margin-left:20px;"
+                               href="{% url 'subby:SubletList' %}">View All Posts</a>
+                        </div>
                     </div>
                 </form>
+
             </div>
             <div class="col"></div>
         </div>
@@ -113,6 +132,9 @@
         </div>
     {% endblock %}
 </div>
+
+
+
 
 <!-- Modals -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label"
@@ -149,7 +171,7 @@
                                             src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-email.svg">
                                     </div>
                                 </div>
-                                <input type="email" class="form-control" id="email-box" name="username"
+                                <input type="email" class="form-control" id="email-box" name="email"
                                        aria-describedby="emailHelp" placeholder="Enter email"
                                        tabindex="0" data-trigger="focus" data-toggle="popover"
                                        data-content="Please enter a valid email">
@@ -168,6 +190,10 @@
                                        name="password">
                             </div>
                         </div>
+                        <!-- <div class="form-group"> -->
+                            <!-- <a class="sb sb-google sb-m-2 sb-fw sb-ct sb-nb d-block mx-auto rounded" -->
+                               <!-- href="#">Login with Google</a> -->
+                        <!-- </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -213,11 +239,25 @@
                                             src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-email.svg">
                                     </div>
                                 </div>
-                                <input type="email" class="form-control" id="su-email-box" name="username"
+                                <input type="email" class="form-control" id="su-email-box" name="email"
                                        aria-describedby="emailHelp" placeholder="Enter email"
                                        tabindex="0" data-trigger="focus" data-toggle="popover">
                             </div>
                             <small id="emailHelp" class="form-text text-muted">UW/WLU emails required</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="su-username-box">Username</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><img
+                                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-username.svg">
+                                    </div>
+                                </div>
+                                <input type="username" class="form-control" id="su-username-box" name="username"
+                                       aria-describedby="usernameHelp" placeholder="Enter username"
+                                       tabindex="0" data-trigger="focus" data-toggle="popover" data-content="Please Enter a valid Username">
+                            </div>
+                            <small id="usernameHelp" class="form-text text-muted">Username Required, within 20 characters</small>
                         </div>
                         <div class="form-group">
                             <label for="su-pw-box">Password</label>
@@ -229,7 +269,8 @@
                                 </div>
                                 <input type="password" class="form-control" id="su-pw-box" placeholder="Password"
                                        name="password" tabindex="0" data-trigger="focus" data-toggle="popover"
-                                       data-content="Please enter a valid password (6 - 16 characters, at least 1 number & special character)">
+                                       data-content="Please enter a valid password (8 - 16 characters, with at least 1 number & special character)">
+							    <small class="form-text text-muted">Please enter a valid password (8 - 16 characters, with at least 1 number & special character)</small>
                             </div>
                         </div>
                         <div class="form-group">
@@ -266,67 +307,100 @@
     {% endblock %}
 </div>
 
+<br /><br /><br />
+<!-- <hr> -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script> -->
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-            crossorigin="anonymous"></script>
-    <script src="{% static 'js/LoginModal.js' %}"></script>
-    <script src="{% static 'js/EditAccountInformation.js' %}"></script>
 
-    <script src="{% static 'js/SmoothScrolling.js' %}"></script>
-    <script src="{% static 'js/MapAPI.js' %}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_searchbar"
-            async defer></script>
 
-    <script type="text/javascript">
-        $(function () {
-            {% if login_error %}
-                $('#login-modal').modal('show');
-            {% endif %}
-            {% if signup_error %}
-                $('#signup-modal').modal('show');
-            {% endif %}
-        });
-    </script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/LoginModal.js' %}"></script>
+<script src="{% static 'js/EditAccountInformation.js' %}"></script>
+<script src="{% static 'js/RatingVerification.js' %}"></script>
+<script src="{% static 'js/SubletDetailVerification.js' %}"></script>
+<script src="{% static 'js/SmoothScrolling.js' %}"></script>
+<script src="{% static 'js/MapAPI.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=init_searchbar"
+        async defer></script>
 
-    <script type="text/javascript">
-        function checkEmail() {
-            $('#su-email-box').popover('hide');
-            $.get('{% url 'subby:signup' %}', {username: $('#su-email-box').val()},
-                function (data) {
-                    if (data === "True") {
-                    } else {
-                        $('#su-email-box').popover({
-                            content: "The following email already exists in our database!",
-                            html: true,
-                            trigger: "manual",
-                            placement: "right"
-                        }).popover('toggle');
-                    }
-                });
-        }
 
-        function onChange() {
-            $("#su-email-box").change(function () {
-                checkEmail();
+
+<script type="text/javascript">
+    $(function () {
+        {% if login_error %}
+            $('#login-modal').modal('show');
+        {% endif %}
+        {% if signup_error %}
+            $('#signup-modal').modal('show');
+        {% endif %}
+    });
+</script>
+
+<script type="text/javascript">
+    function checkEmail() {
+        $('#su-email-box').popover('hide');
+        $.get('{% url 'subby:signup' %}', {username: $('#su-email-box').val()},
+            function (data) {
+                if (data === "True") {
+                } else {
+                    $('#su-email-box').popover({
+                        content: "The following email already exists in our database!",
+                        html: true,
+                        trigger: "manual",
+                        placement: "right"
+                    }).popover('toggle');
+                }
             });
-        }
+    }
 
-        $(document).ready(onChange);
-    </script>
+    function checkLoginEmail() {
+        $.get('{% url 'subby:signup' %}', {email: $('#email-box').val()},
+            function (data) {
+                if (data === "True") {
+                    $('#email-box').removeClass('green-border');
+                } else {
+                    $('#email-box').addClass('green-border');
+                }
+            });
+    }
 
+    function onChange() {
+        $("#su-email-box").change(function () {
+            checkEmail();
+        });
+        $('#email-box').change(function () {
+            checkLoginEmail();
+        });
+    }
+
+    $(document).ready(onChange);
+</script>
+
+<script>
+
+var ele = document.querySelectorAll('[role="alert"]');
+var message_ele = ele[0];
+
+if (message_ele) {
+	setTimeout(function(){
+	   message_ele.style.display = "none";
+	}, 3000);
+}
+
+</script>
 
 {% block js %}
 
@@ -335,6 +409,11 @@
 </body>
 
 <footer>
-    <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/twitter" title="Twitter">Twitter</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+	<br /><br /><br />
+	<hr class="mb-1">
+	<div class="container-fluid">
+		<p class="copy_right"> ©Subby. All rights reserved</p>
+	</div>
 </footer>
+
 </html>

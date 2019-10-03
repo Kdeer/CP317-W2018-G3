@@ -1,2 +1,4 @@
 [run]
-    include = subby/tests/*
+    include =
+        subby/views/*
+        subby/models/*

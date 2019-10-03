@@ -1,0 +1,84 @@
+{% extends 'application/base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="jumbotron jumbo-container" style="min-height: 90vh;">
+		<div class="container">
+			<h2>My Postings List</h2>
+			{% if my_postings|length > 0 %}
+			<br>
+			{% for post in my_postings %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div onclick="window.location='{% url 'subby:SubletDetail' post.id %}';" style="cursor:pointer;">
+							<h4 id="sublet_title">{{ post.title }}</h4>
+							{% for i in image_list %}
+							{% if i.sublet.id == post.id %}
+							<img src="{{ i.image.url }}" class="img-fluid" height="200"
+							width="200"/>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-3 mt-1">
+						<h5>Address</h5>
+						<p>{{ post.street_address }}, {{ post.city }}</p>
+						<h5>Rent</h5>
+						<p>${{ post.price }}</p>
+					</div>
+					<div class="col-md-2 mt-1">
+						<h5>Description</h5>
+						<p>{{ post.summary }}</p>
+						<h5>Offered By</h5>
+						<p style="color:green;">{{ post.user.username }}</p>
+					</div>
+					<div class="col-md-1 mt-1">
+						<button class="btn btn-danger float-right mr-2" type="button"
+						data-toggle="modal" data-target="#delete-modal"
+						aria-controls="deletingToggler" aria-expanded="false"
+						aria-label="Toggle navigation">Delete
+						</button>
+					</div>
+					
+				</div>
+				<hr>
+			</div>
+			<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label"
+			aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content bg-dark">
+						<div class="modal-header">
+							<div>
+								<h4 class="text-white">Delete the sublet?</h4>
+								
+							</div>
+						</div>
+						<form method="POST" action="{% url 'subby:delete_sublet' sublet_id=post.id%}">
+							{% csrf_token %}
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+								
+								<button type="submit" class="btn btn-primary" id="submit_button">Yes</button>
+								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<p>You have no posting yet. <a class="btn btn-secondary" href="{% url 'subby:create_sublet' %}">Post a Sublet?</a></p>
+			
+			{% endif %}
+			<br>
+			
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

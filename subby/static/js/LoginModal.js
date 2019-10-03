@@ -28,9 +28,11 @@ $(function () {
         $('#su-email-box').popover('hide');
         $('#su-pw-box').popover('hide');
         $('#pw-confirm-box').popover('hide');
+        $('#su-username-box').popover('hide');
         let email = $('#su-email-box').val();
         let pw = $('#su-pw-box').val();
         let pw_confirm = $('#pw-confirm-box').val();
+        let username = $('#su-username-box').val();
         let error = false;
         if (!email || (!uwaterloo_email.test(email) && !mylaurier_email.test(email)
             && !wlu_email.test(email) && !uwaterloo_new.test(email))) {
@@ -51,6 +53,10 @@ $(function () {
             $('#pw-confirm-box').popover('show');
             error = true;
         }
+		
+		if (!username || username.length > 20) {
+			$('#su-username-box').popover('show');
+		}
 
         if (error) {
             return false;

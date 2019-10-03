@@ -1,0 +1,69 @@
+
+/* Main web page styling upon opening Favourite List Menu*/
+#main-page {
+    padding: 5px;
+	transition: margin-left .7s;/*Transformation speed of main web page, keep the same speed as fav-nav transition speed */
+}
+
+/* Favourite Menu Styling */
+.fav-nav {
+	width: 0; /* Initial closed state */
+    height: 100%;
+    position: fixed;
+	background-color: #29497c; /* Placeholder colour atm*/
+    z-index: 1; /* Keep this at 1 so that the Fav menu can remain on top of other elements*/
+    left: 0;
+	top: 19%; /* y-Position of menu, 19% = at height of sublet images */
+    overflow-x: hidden; /* Hides link contents when Favourite menu is closed*/
+    padding-top: 50px; /* Favourite menu Link positional padding */
+    transition: 0.7s;
+}
+
+
+/* Favourite menu link styling */
+.fav-nav a {
+    padding: 12px 12px 12px 28px;
+	font-size: 42px;
+    color: #ffffff;
+    display: block;
+    transition: 0.4s;
+}
+
+/* State of favourite menu links on mouse hover */
+.fav-nav a:hover{
+    color: #3104f7;
+}
+
+/* Favourite opening button styling*/
+.favourite-button{
+  position: fixed;
+  overflow: hidden;
+  text-align: center;
+  top: 18%;
+  left: 0;
+  right: 0;
+  width: 9%;
+  height: 1.5%;
+  padding:0,0,0,0;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+
+  background-color: #f1f1f1;
+  color: #2d2d2d;
+
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  transform-origin: bottom left;
+
+}
+/* Favourite Menu cancel button styling*/
+.fav-nav .cancel-button {
+    margin-left: 3%;
+    top: 0;
+	position: absolute;
+    font-size: 20px;
+
+}

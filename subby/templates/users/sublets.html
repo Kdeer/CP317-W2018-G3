@@ -1,0 +1,39 @@
+{% extends 'application/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/users/sublets.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron jumbo-container" style="min-height: 90vh;">
+    <div class="container">
+      <h2>Sublet Postings for {{ user.email }}</h2>
+      {% if user.sublets.all.count > 0 %}
+        <br>
+        {% for sublet in user.sublets.all %}
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3"><h5>Title</h5></div>
+            <div class="col-md-5"><h5>Address</h5></div>
+            <div class="col-md-3"><h5>Rent</h5></div>
+          </div>
+          <div class="row sublet-items" onclick="window.location='{% url 'subby:SubletDetail' sublet.id %}';" style="cursor:pointer;">
+            <div class="col-md-3"><span>{{ sublet.title }}</span></div>
+            <div class="col-md-5"><span>{{ sublet.street_address }}, {{ sublet.city }}</span></div>
+            <div class="col-md-3"><span>${{ sublet.price }}</span></div>
+          </div>
+          <hr>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>This user has no sublet postings.</p>
+      {% endif %}
+      <br>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

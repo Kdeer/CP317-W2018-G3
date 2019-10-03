@@ -1,0 +1,74 @@
+{% extends 'application/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron jumbo-container" style="min-height: 90vh; max-height: 90vh; overflow-y: scroll;">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2>Reports</h2>
+                    </div>
+                    <div class="col">
+                        <form action="{% url 'subby:search_report' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-10">
+                                    <input class="form-control" type="search" placeholder="Search for email"
+                                           aria-label="Report Filter"
+                                           name="query" id="report-search-bar" onkeyup="filterReports()">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-secondary search-btn" id="report-search-button"
+                                            type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% for r in reports %}
+                    <div class="container bg-dark rounded text-light mt-3 report" id="{{ r.user.email }}">
+                        <div class="row">
+                            <div class="col mt-2">
+                                {% load index %}
+                                <h5>Report for {{ r.user.email }} -- <a href="{% url 'subby:user_show' r.user.id %}">View Profile</a></h5>
+                                <p>Reason: {{ r.ISSUES|index:r.issue|index:1 }}</p>
+                                <hr class="border-light">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="rlist-description{{ r.id }}">Description:</label>
+                                    <textarea class="form-control" id="rlist-description{{ r.id }}" disabled
+                                              rows="3">{{ r.description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        function filterReports() {
+            let input, filter, reports, report, i;
+            input = document.getElementById('report-search-bar');
+            filter = input.value.toUpperCase();
+            reports = document.getElementsByClassName('report');
+
+            for (i = 0; i < reports.length; i++) {
+                report = reports[i].getAttribute('id');
+                if (report.toUpperCase().indexOf(filter) > -1) {
+                    reports[i].style.display = "";
+                } else {
+                    reports[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+{% endblock %}

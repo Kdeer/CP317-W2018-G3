@@ -20,14 +20,14 @@
         1.4. <a href="#14referencingdocuments">Referencing Documents</a>
       </li>
       <li>
-        <strong><a href="#2_Major_Features_0">Major Features</a></strong><br>
-        2.1. <a href="#21__BrowseSearch_Sublet_Listings_1">Browse/Search Sublet Listings</a><br>
-        2.2. <a href="#22_Create_Sublet_Listings_9">Create Sublet Listings</a><br>
-        2.3. <a href="#23_Contact_Sublet_Owners_14">Contact Sublet Owners</a><br>
-        2.4. <a href="#24_CreateEdit_User_Account_19">Create/Edit User Accounts</a><br>
-        2.5. <a href="#25_AddRemove_Favourite_Sublet_Listings_24">Add/Remove Favourite Sublet Listings</a><br>
-        2.6. <a href="#26_EditDelete_Posted_Sublet_Listings_29">Edit/Delete Posted Sublet Listings</a><br>
-        2.7. <a href="#27_Submit_Reports_34">Submit Reports</a><br>
+        <strong><a href="#2majorfeatures">Major Features</a></strong><br>
+        2.1. <a href="#21browsesearchsubletlistings">Browse/Search Sublet Listings</a><br>
+        2.2. <a href="#22createsubletlistings">Create Sublet Listings</a><br>
+        2.3. <a href="#23contactsubletowner">Contact Sublet Owner</a><br>
+        2.4. <a href="#24createedituseraccount">Create/Edit User Account</a><br>
+        2.5. <a href="#25addremovefavouritesubletlistings">Add/Remove Favourite Sublet Listings</a><br>
+        2.6. <a href="#26editdeletepostedsubletlistings">Edit/Delete Posted Sublet Listings</a><br>
+        2.7. <a href="#27submitreports">Submit Reports</a>
       </li>
       <li>
         <strong><a href="#3designconsiderations">Design Considerations</a></strong><br>
@@ -42,9 +42,9 @@
         4.1. <a href="#41technicalstandardsandguidelines">Technical Standards and Guidelines</a><br>
         4.1.1. <a href="#411generalguidelines">General Guidelines</a><br>
         4.1.2. <a href="#412technicalstandards">Technical Standards</a><br>
-        4.1.3. <a href="#413datastorage">Data Storage</a><br>
-        4.1.4. <a href="#414datasecurity">Data Security</a><br>
-        4.1.5. <a href="#415controlflow">Control Flow</a>
+        4.1.3. <a href="#413securityandprivacyconsiderations">Security and Privacy Considerations</a><br>
+        4.1.4. <a href="#414controlflow">Control Flow</a><br>
+        4.2. <a href="#42projectdeployment">Project Deployment</a>
       </li>
       <li>
         <strong><a href="#5projecttesting">Project Testing</a></strong><br>
@@ -71,13 +71,13 @@
       1. Introduction
     </h1>
     <p>
-      In the Design Phase we consider the behaviour of the system and detail its design. Here, the software architecture is established, providing the framework of the various subsystems and the interaction between them. Building on the Analysis Phase, the Architecture Design introduces the corresponding interfaces of the predefined modules outlined in the previous phases. Additionally, this phase incorporates the Detailed Design which outlays the algorithms and data structures responsible for the operation of the product modules.
+      In the Design Phase, we consider the behaviour of the system and detail its design. Here, the software architecture is established, providing the framework of the various subsystems and the interaction between them. Building on the Analysis Phase, the Architecture Design introduces the corresponding interfaces of the predefined modules outlined in the previous phases. Additionally, this phase incorporates the Detailed Design which outlays the algorithms and data structures responsible for the operation of the product modules.
     </p>
     <h2 id="11purpose">
       1.1. Purpose
     </h2>
     <p>
-      The Design Phase seeks to capture and document the specific data structures and workflows of the system in order to provide a detailed description of the project's design and automation. Once completed, the development team may proceed with a reliable forecast of the project's time line and design for the Implementation Phase.
+      The Design Phase seeks to capture and document the specific data structures and workflows of the system in order to provide a detailed description of the project's design and automation. Once completed, the development team may proceed with a reliable forecast of the project's timeline and design for the Implementation Phase.
     </p>
     <h2 id="12intendedaudience">
       1.2. Intended Audience
@@ -89,7 +89,7 @@
       1.3. Product Scope
     </h2>
     <p>
-      The scope of Subby is driven by the need for a "one-stop shop" for Waterloo sublets. This will be done by creating, advertising and maintaining a sing website dedicated for finding and selling sublets. Achieving this will simplify an individual's search to find a place for the school year while also aiding in an individual's search for a renter. The finished product will be simple to use and easy to navigate through its various filters.
+      The scope of Subby is driven by the need for a "one-stop shop" for Waterloo sublets. This will be done by creating, advertising and maintaining a single website dedicated for finding and selling sublets. Achieving this will simplify an individual's search to find a place for the school year while also aiding in an individual's search for a renter. The finished product will be simple to use and easy to navigate through its various filters.
     </p>
     <h2 id="14referencingdocuments">
       1.4. Referencing Documents
@@ -102,80 +102,92 @@
         <a href="https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Subby-Analysis.md.html">Analysis Documentation for Subby</a>
       </li>
     </ul>
-    
-    <!-- -->
-<h1><a id="2_Major_Features_0"></a>2. Major Features</h1>
-<h2><a id="21__BrowseSearch_Sublet_Listings_1"></a>2.1.  Browse/Search Sublet Listings</h2>
-<ul>
-<li>Users can browse listings created by users.
-<ul>
-<li>Browsing is not limited to registered users and listings are accessible to public users.</li>
-<li>Users can browse listings using a list, or by manipulating an interactive map.</li>
-</ul>
-</li>
-<li>Search functions enable public and registered users to specify postings by location or address.
-<ul>
-<li>Filters can be applied by users to refine searches using criteria such as, price range, size, number of rooms available, and duration of stay.</li>
-<li>Users can sort search results using price, date, and ratings.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="22_Create_Sublet_Listings_9"></a>2.2. Create Sublet Listings</h2>
-<ul>
-<li>Registered users can create sublet listings.
-<ul>
-<li>Users can add details, such as the location and a description, of the listing and choose to upload photos as well.</li>
-<li>Users can also add filters to their listing, enabling their listing to be included in more refined searches.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="23_Contact_Sublet_Owners_14"></a>2.3. Contact Sublet Owners</h2>
-<ul>
-<li>Users can contact sublet owners through the subby platform.
-<ul>
-<li>An e-mail will be sent to the sublet owner’s registered e-mail address and will include the attached message and the e-mail address with which the user registered.</li>
-<li>The sublet owner will then be able to contact the user directly.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="24_CreateEdit_User_Account_19"></a>2.4. Create/Edit User Account</h2>
-<ul>
-<li>Users are able to create an account using a verified school e-mail address.
-<ul>
-<li>Users are able to edit their preferences and change their password.</li>
-<li>Users will also have a profile containing basic information about them, such as their name and school.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="25_AddRemove_Favourite_Sublet_Listings_24"></a>2.5. Add/Remove Favourite Sublet Listings</h2>
-<ul>
-<li>Users can organize and manage a list of their favourite sublet listings.
-<ul>
-<li>Users are able to add sublet listings to their favourites as they are browsing.</li>
-<li>Users can later go to their favourite listings and remove any listings they no longer want to include.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="26_EditDelete_Posted_Sublet_Listings_29"></a>2.6. Edit/Delete Posted Sublet Listings</h2>
-<ul>
-<li>Users are able to modify any sublet listings that they post.
-<ul>
-<li>Users are able to change any details, filter options or photos they included in their listing.</li>
-<li>Users are also able to delete their listings at any time they desire.</li>
-</ul>
-</li>
-</ul>
-<h2><a id="27_Submit_Reports_34"></a>2.7. Submit Reports</h2>
-<ul>
-<li>Users are able to issue reports concerning any violations of Subby’s <a href="https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&amp;Conditions.md">Terms and Conditions Policy</a>
-<ul>
-<li>Reports will be reviewed by administrators and the appropriate penalties will be issued.</li>
-<li>Penalties will depend on the severity of the violation and can range from deletion of the listing or temporary suspension to indefinite banning of the violating account.</li>
-</ul>
-</li>
-</ul>
-    <!-- -->
-    
+    <h1 id="2majorfeatures">
+      2. Major Features
+    </h1>
+    <h2 id="21browsesearchsubletlistings">
+      2.1. Browse/Search Sublet Listings
+    </h2>
+    <ul>
+      <li>Users can browse listings created by users.
+      </li>
+      <li>Browsing is not limited to registered users and listings are accessible to public users.
+      </li>
+      <li>Users can browse listings using a list, or by manipulating an interactive map.
+      </li>
+      <li>Search functions enable public and registered users to specify postings by location or address.
+      </li>
+      <li>Filters can be applied by users to refine searches using criteria such as price range, size, number of rooms available, and duration of stay.
+      </li>
+      <li>Users can sort search results using price, date, and ratings.
+      </li>
+    </ul>
+    <h2 id="22createsubletlistings">
+      2.2. Create Sublet Listings
+    </h2>
+    <ul>
+      <li>Registered users can create sublet listings.
+      </li>
+      <li>Users can add details, such as the location and a description of the listing and choose to upload photos as well.
+      </li>
+      <li>Users can also add filters to their listing, enabling their listing to be included in more refined searches.
+      </li>
+    </ul>
+    <h2 id="23contactsubletowners">
+      2.3. Contact Sublet Owners
+    </h2>
+    <ul>
+      <li>Users can contact sublet owners through the Subby platform's "Contact Sublessor?".
+      </li>
+      <li>An e-mail will be sent to the sublet owner's registered e-mail address and will include the attached message and the e-mail address with which the user registered.
+      </li>
+      <li>The sublet owner will then be able to contact the user directly.
+      </li>
+    </ul>
+    <h2 id="24createedituseraccount">
+      2.4. Create/Edit User Account
+    </h2>
+    <ul>
+      <li>Users are able to create an account using a verified school e-mail address.
+      </li>
+      <li>Users are able to edit their preferences and change their password.
+      </li>
+      <li>Users will also have a profile containing basic information about them, such as their name and school.
+      </li>
+    </ul>
+    <h2 id="25addremovefavouritesubletlistings">
+      2.5. Add/Remove Favourite Sublet Listings
+    </h2>
+    <ul>
+      <li>Users can organize and manage a list of their favourite sublet listings.
+      </li>
+      <li>Users are able to add sublet listings to their favourites as they are browsing.
+      </li>
+      <li>Users can later go to their favourite listings and remove any listings they no longer want to include.
+      </li>
+    </ul>
+    <h2 id="26editdeletepostedsubletlistings">
+      2.6. Edit/Delete Posted Sublet Listings
+    </h2>
+    <ul>
+      <li>Users are able to modify any sublet listings that they post.
+      </li>
+      <li>Users are able to change any details, filter options or photos they include in their listing.
+      </li>
+      <li>Users are also able to delete their listings at any time they desire.
+      </li>
+    </ul>
+    <h2 id="27submitreports">
+      2.7. Submit Reports
+    </h2>
+    <ul>
+      <li>Users are able to issue reports concerning any violations of Subby's <a href="https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&amp;Conditions.md.html">Terms and Conditions Policy</a>
+      </li>
+      <li>Reports will be reviewed by administrators and the appropriate penalties will be issued.
+      </li>
+      <li>Penalties will depend on the severity of the violation and can range from deletion of the listing or temporary suspension to indefinite banning of the violating account.
+      </li>
+    </ul>
     <h1 id="3designconsiderations">
       3. Design Considerations
     </h1>
@@ -183,7 +195,7 @@
       3.1. Assumptions and Dependencies
     </h2>
     <ul>
-      <li>Users will have basic knowledge of how to use a computer, more specifically webiste navigation
+      <li>Users will have basic knowledge of how to use a computer, more specifically website navigation
       </li>
       <li>Users will have a university or college email to register
       </li>
@@ -194,7 +206,7 @@
       3.2. End-user Characteristics
     </h2>
     <ul>
-      <li>The ability for administrators to fix, update and maintain the website
+      <li>The ability for administrators to fix various bugs that arise, provide updates for the website when appropriate and maintain the website for years to come
       </li>
       <li>Users have the ability to filter their searches based on their needs
       </li>
@@ -203,8 +215,6 @@
       <li>Users can post their rooms for rent in addition to posting "wanted" ads
       </li>
       <li>Users can rate other users based on their experiences
-      </li>
-      <li>Users are able to place a bid on properties they are interested in
       </li>
     </ul>
     <h2 id="33generalconstraints">
@@ -217,16 +227,26 @@
         <ul>
           <li>$0.50 USD per 1,000 map loads over the daily free limit up to a maximum of 100,000 map loads
           </li>
+          <li>Subby administrators are trying to make the site as cost-effective as possible which will limit the site to a daily limit of 25,000 map loads
+            <ul>
+              <li>Once the site goes above the 25,000 map loads limit, users will not be able to view the map and instead will have to browse sublets manually through the listings page
+              </li>
+              <li>However, the Subby team anticipate that 25,000 map loads will be enough for the first few years of Subby's release
+              </li>
+            </ul>
+          </li>
         </ul>
-      </li>
-      <li>Subby administrators are trying to make the site as cost-effective as possible which will limit the site to a daily limit of 25,000 map loads
       </li>
     </ul>
     <h2 id="34goalsandguidelines">
       3.4. Goals and Guidelines
     </h2>
     <ul>
-      <li>Comments will be used when coding
+      <li>Comments will be used when coding to make it easier for the SQA team to understand the code
+        <ul>
+          <li>Subby SQA team members will run the code, make appropriate suggestions to the author and then act accordingly
+          </li>
+        </ul>
       </li>
       <li>All features in the design and analysis documents will be adhered to
       </li>
@@ -263,112 +283,218 @@
     <ul>
       <li>Code should be easily readable and as self-documenting as possible to enable ease of future maintenance.
       </li>
-      <li>Code should be DRY; functionality should be abstracted, rather than repeated, to avoid issues in maintenance.
+      <li>Code should be <a href="https://www.artima.com/intv/dry.html">DRY</a>; functionality should be abstracted, rather than repeated, to avoid issues in maintenance.
       </li>
       <li>Methods that perform non-trivial operations should have a short comment with a description of their side-effects.
       </li>
       <li>Blocks within methods that are complex should have a short comment explaining their purpose.
       </li>
-      <li>Frontend HTML and CSS must be in compliance with the established W3C standards.
+      <li>Front-end HTML and CSS must be in compliance with the established <a href="https://www.w3.org/standards/">W3C standards</a>.
       </li>
-    </ul>
-    <h3 id="413datastorage">
-      4.1.3. Data Storage
-    </h3>
-    <ul>
-      <li>All objects will be organized into logical groups within one or more schemas in the database to maintain data organization and manageability.
+      <li>Browser Compatibility.
       </li>
-      <li>Objects within one schema should be accessible within another schema, assuming access is permitted.
+      <li>Bootstrap front-end framework will be used to ease cross-browser compatibility
       </li>
-      <li>Permit flexible and robust implementation of user defined objects, such as functions, data types, indexes and operators
+      <li>A CSS reset stylesheet will be used to ensure behavior consistency between browsers
       </li>
-      <li>Support a variety of data types, such as:
+      <li>Mac OS X, Linux and Windows users should be able to display the website with full functionality in the following browsers:
         <ul>
-          <li>Boolean
+          <li>Internet Explorer 8.0 and 9.0 (Windows)
           </li>
-          <li>Binary
+          <li>Safari (mac)
           </li>
-          <li>Text (varchar, chart, text)
+          <li>Firefox (Windows, Mac, Linux)
           </li>
-          <li>Date/Time
+          <li>Chrome (Windows, Mac, Linux)
           </li>
-          <li>Enum
+        </ul>
+      </li>
+      <li>Error and Exception Handling
+      </li>
+      <li>Error Handling.
+        <ul>
+          <li>Error handlers will be used to catch and respond to common HTTP errors, including:
           </li>
-          <li>Array
+          <li>400: Bad Request
           </li>
-          <li>User defined data type
+          <li>401: Unauthorized.
+          </li>
+          <li>403: Forbidden
+          </li>
+          <li>404: Not Found
+          </li>
+          <li>500: Internal Server Error
+          </li>
+          <li>502: Bad Gateway
+          </li>
+          <li>503: Service Unavailable
+          </li>
+          <li>Resulting error pages will be customized to display a description of the error in layman’s terms and should be formatted consistent with Subby’s website branding.
+          </li>
+        </ul>
+      </li>
+      <li>Exception Handling.
+        <ul>
+          <li>Every client request will be wrapped in try-except handlers to catch and report any unhandled error.
+          </li>
+          <li>Any code that is likely to raise a common Python or Django exception, such as IOError or ImportError will be wrapped in try- exception handlers.
           </li>
         </ul>
       </li>
     </ul>
-    <h3 id="414datasecurity">
-      4.1.4. Data Security
+    <h3 id="413securityandprivacyconsiderations">
+      4.1.3. Security and Privacy Considerations
     </h3>
     <ul>
-      <li>Database must maintain the security and integrity of data housed with in it on several levels:
+      <li>
+        <p>
+          Privacy Settings.
+        </p>
+      </li>
+      <li>
+        <p>
+          Dual-Mode privacy setting for User account data:
+        </p>
         <ul>
-          <li>Access Control:
-            <ul>
-              <li>Postgres ensures all files stored are protected from reading by any accounts other than the Admin.
-              </li>
-              <li>Access is granted or revoked on any object all the way down the column level.
-              </li>
-              <li>User authentication is performed by backend server and postmaster, who sanction permissions to users requesting access to data.
-              </li>
-              <li>Each Postgres user account is assigned a username and is further secured with a password.
-              </li>
-              <li>Write access is limited to the Admin by default.
-              </li>
-            </ul>
+          <li>Private:
           </li>
-          <li>Data Integrity:
-            <ul>
-              <li>Foreign Keys
-              </li>
-              <li>Primary Keys
-              </li>
-              <li>Column constraints
-              </li>
-              <li>Row Checks
-              </li>
-              <li>UNIQUE, NOT NULL
-              </li>
-              <li>Explicit Locks, Advisory Locks
-              </li>
-            </ul>
+          <li>By default, User’s phone number, email address, and name will be exclusively accessible to the User
           </li>
-          <li>Data Recovery:
-            <ul>
-              <li>Online backup
-              </li>
-              <li>Point-in-time recovery using write-ahead logging
-              </li>
-              <li>Tablespaces
-              </li>
-            </ul>
+          <li>Public:
           </li>
-          <li>Concurrency Control:
-            <ul>
-              <li>Concurrency is managed through multi-version concurrency control (MVCC) and immunity to dirty reads.
-              </li>
-              <li>Ensures each transaction is not visible to other transactions until committed.
-              </li>
-              <li>Uphold ACID principles:
-                <ul>
-                  <li>Three levels of transaction isolation are offered: read committed, repeatable read and serializable.
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <li>By default, a User’s username, published listings and pictures and profile description will be shared with all Users and Visitors.
           </li>
         </ul>
       </li>
+      <li>
+        <p>
+          User Authentication.
+        </p>
+      </li>
+      <li>
+        <p>
+          Subby will use a single sign-on approach to authenticate Users;
+        </p>
+      </li>
+      <li>
+        <p>
+          Usernames must be unique and can contain letters (A-Z), numbers (0-9), dashes (-), underscores (_), and periods (.);
+        </p>
+      </li>
+      <li>
+        <p>
+          Passwords can contain any combination of printable ASCII characters and must contain a minimum of 8 characters comprised of at least one number and one special character (e.g. !, @, #, $, etc.).
+        </p>
+      </li>
+      <li>
+        <p>
+          Passwords will be automatically salted to further safeguard passwords before they are stored in the database.
+        </p>
+      </li>
+      <li>
+        <p>
+          User Access and Permissions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Based on the functional requirements of Users and on security considerations, Subby will offer three permission levels:
+        </p>
+        <ul>
+          <li>Visitor – View-Only:
+            <ul>
+              <li>search and view listings
+              </li>
+            </ul>
+          </li>
+          <li>User – Design:
+            <ul>
+              <li>view, add, update and delete authored listings
+              </li>
+              <li>search, view, report, flag and respond to the listings of others
+              </li>
+            </ul>
+          </li>
+          <li>Admin – Full-Access:
+          </li>
+          <li>add, modify, and delete User listings
+          </li>
+          <li>freeze and terminate User accounts
+          </li>
+          <li>view and delete User profile information
+          </li>
+          <li>review and respond to reports and flagged User listings and accounts
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Below, Table A summarizes the aforementioned User Access Controls
+        </p>
+        <p>
+          <img src="https://i.imgur.com/OisjZIs.png" alt="permissionsSummary">
+        </p>
+        <p>
+          <strong>Table A</strong>
+        </p>
+      </li>
+      <li>
+        <p>
+          For more details on User functionalities and permissions, refer to <strong><a href="#2majorfeatures">Major Features</a></strong>
+        </p>
+      </li>
+      <li>
+        <p>
+          Subby’s Privacy Policy (unofficial):
+        </p>
+      </li>
+      <li>
+        <p>
+          Subby will not share data with any third party entities, including marketing organizations
+        </p>
+      </li>
+      <li>
+        <p>
+          Subby will not send unsolicited marketing material and advertisements
+        </p>
+      </li>
+      <li>
+        <p>
+          Subby will collect and store all User provided information:
+        </p>
+        <ul>
+          <li>Account Information: Information requested during the Sign Up stage, such as user’s name, username, date of birth and email address.
+          </li>
+          <li>Profile Information: A User’s profile description, phone number, profile picture and other profile information.
+          </li>
+          <li>Listing Information: A listing’s address, price, features, pictures, and reviews.
+          </li>
+          <li>Communication Forms: Information sent by a sublet seeker to a leasee through a listing communication form.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Information that will be automatically collected and stored:
+        </p>
+        <ul>
+          <li>Log Data: Datetime of all data updates and creation, including account creation and destruction, website access, and listing edits.
+          </li>
+          <li>Cookies: Subby will use (persistent and session) cookies for User recognition and personalization purposes.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          For more Subby privacy and secuirty policies and regulations, refer to Subby's <a href="https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&amp;Conditions.md">Terms and Conditions Policy</a>
+        </p>
+      </li>
     </ul>
-    <h3 id="415controlflow">
-      4.1.5. Control Flow
+    <h3 id="414controlflow">
+      4.1.4. Control Flow
     </h3>
     <ul>
-      <li>Data will transmit between client and PostgreSQL database. Client interacts with the PostgreSQL database using PHP Data Objects (PDO) API. It allows performing the common database operations in PHP such as creating new tables, inserting data, updating data, querying data, deleting data and so on. Once the connection is established successfully, client will directly send qury to database and database will respond corresponding answers to client.
+      <li>Data transmitted from the client will be saved in a PostgreSQL database. The client interacts with the web server, which uses the <code>django.db</code> database adapter to perform common operations such as inserting, updating, and querying data. This database adapter will also allow for the creation of data migrations to create schemas and tables as necessary in development and production. The client will not have direct database access- all communication will be handled by the web server.
       </li>
     </ul>
     <h2 id="42projectdeployment">
@@ -383,6 +509,19 @@
     <h1 id="5projecttesting">
       5. Project Testing
     </h1>
+    <h2 id="51testingstrategies">
+      5.1. Testing Strategies
+    </h2>
+    <ul>
+      <li>Unit testing will be done on every method that is written on each model to ensure that each model is functioning as they should be.
+      </li>
+      <li>Integration testing will be done by testing the controllers of each model since many cases requires working with multiple models on a single view.
+      </li>
+      <li>Further manual testing will be done to find any bugs or defects that may have not been originally detected.
+      </li>
+      <li>GUI testing will be conducted to test characteristics such as text formatting, text boxes, buttons, lists, layout, colors, fonts, font sizes, and so on.
+      </li>
+    </ul>
     <h1 id="6projectarchitecture">
       6. Project Architecture
     </h1>
@@ -390,7 +529,7 @@
       6.1. Class Diagram
     </h2>
     <p>
-      <img src="https://i.imgur.com/ODITqTs.jpg" alt="DesignClassDiagram">
+      <em>Note that this large diagram is an overview to show the relationships between the classes. More detail on each class is provided below.</em> <img src="https://i.imgur.com/li2CAi4.jpg" alt="DesignClassDiagram" width="1900" height="1491">
     </p>
     <h2 id="62packagedetails">
       6.2. Package Details
@@ -402,435 +541,32 @@
       6.2.1 User Package
     </h2>
     <p>
-      <img src="https://i.imgur.com/zEhaUms.jpg" alt="UserPackage">
+      <img src="https://i.imgur.com/IpKHU5d.jpg" alt="UserPackage">
     </p>
-    <h3 id="userclass">
-      User Class
-    </h3>
-    <h4 id="methods">
-      Methods
-    </h4>
-    <ul>
-      <li>
-        <p>
-          Constructor (public)
-        </p>
-        <ul>
-          <li>User(options: map) - Class Constructor. Options parameter is a key-value object with the attributes of the desired User. Only non-null fields are enforced.
-            <ul>
-              <li>Options: (email: string, password: string, lastname: string, firstname: string, phonenumber: string)
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Getters (public)
-        </p>
-        <ul>
-          <li>get_user_id():int
-          </li>
-          <li>get_email():string
-          </li>
-          <li>get_created_at():datetime
-          </li>
-          <li>get_updated_at():datetime
-          </li>
-          <li>get_is_admin():boolean
-          </li>
-          <li>get_last_name():string
-          </li>
-          <li>get_first_name():string
-          </li>
-          <li>get_phone_number():string
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Setters (public)
-        </p>
-        <ul>
-          <li>set_email(email: string)
-          </li>
-          <li>set_created_at(date: datetime)
-          </li>
-          <li>set_updated_at(date: datetime)
-          </li>
-          <li>set_is_admin(is_admin: boolean)
-          </li>
-          <li>set_password_from<em>plaintext(plain</em>password: string) - Generates hashed password and sets the salt attribute on the user.
-          </li>
-          <li>set_first_name(firstname: string)
-          </li>
-          <li>set_last_name(lastname: string)
-          </li>
-          <li>set_phone_number(phonenumber: string)
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Helpers (public)
-        </p>
-        <ul>
-          <li>test_password(password: string) - Tests the given plaintext password against the user's salted and hashed password.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Helpers (private)
-        </p>
-        <ul>
-          <li>
-            <strong>Static:</strong> hash_password(password: string) - Salts and hashes the given plaintext password.
-          </li>
-          <li>validate_password(password: string) - Ensure password meets specifications (e.x. 8 character minimum limit).
-          </li>
-          <li>validate_phone_number(phonenumber: string) - Ensure that the phone number is of valid length and format.
-          </li>
-          <li>validate_email(email: string) - Validates the format of the given email.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Relation Helpers (public)
-        </p>
-        <ul>
-          <li>save() - Runs the validation helpers, returning errors if present, and saves the User if it is valid.
-          </li>
-          <li>reviews() - Returns an array of Reviews created by the User.
-          </li>
-          <li>favorites() - Returns an array of Favorites created by the User.
-          </li>
-          <li>sublets() - Returns an array of Sublets created by the User.
-          </li>
-          <li>reports() - Returns an array of Reports created by the User.
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h2 id="622subletpackage">
       6.2.2 Sublet Package
     </h2>
     <p>
-      <img src="https://i.imgur.com/16Ab2Kx.jpg" alt="SubbySubletPackage">
+      <img src="https://i.imgur.com/T55Cppm.jpg" alt="SubbySubletPackage">
     </p>
-    <h3 id="subletclass">
-      Sublet Class
-    </h3>
-    <h4 id="methods-1">
-      Methods
-    </h4>
-    <ul>
-      <li>
-        <p>
-          Constructor (public)
-        </p>
-        <ul>
-          <li>Sublet(sublet_title: string, duration: int, price_per_month: double, location: string, description: string) - Class Constructor. All non-null fields are enforced except for datetime fields, which are automatically recorded by the system.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Getters (public)
-        </p>
-        <ul>
-          <li>get_sublet_id(): int
-          </li>
-          <li>get_is_sold(): boolean
-          </li>
-          <li>get_sublet_title: string
-          </li>
-          <li>get_duration():int
-          </li>
-          <li>get_price_per_month(): double
-          </li>
-          <li>get_location: string
-          </li>
-          <li>get_description(): string
-          </li>
-          <li>get_created_at(): datetime
-          </li>
-          <li>get_updated_at():datetime
-          </li>
-          <li>get_owner_id(): int
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Setters (public)
-        </p>
-        <ul>
-          <li>set_sublet_title(title: string
-          </li>
-          <li>set_is_sold(status: boolean)
-          </li>
-          <li>set_duration(duration: int)
-          </li>
-          <li>set_price_per_month(price: double)
-          </li>
-          <li>set_location(location: string)
-          </li>
-          <li>set_description(desc: string)
-          </li>
-          <li>set_created_at(date: datetime)
-          </li>
-          <li>set_updated_at(date: datetime)
-          </li>
-          <li>set_owner_id(user_id: int)
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Relation Helpers (public)
-        </p>
-        <ul>
-          <li>save() - Commits the Sublet to the database, assuming Sublet is correctly initiated
-          </li>
-          <li>reviews() - Returns an array of Reviews concerning the Sublet
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h2 id="623ratingpackage">
       6.2.3 Rating Package
     </h2>
     <p>
       <img src="https://i.imgur.com/szf85fl.png" alt="SubbyRatingPackage">
     </p>
-    <h3 id="ratingclass">
-      Rating Class
-    </h3>
-    <h3 id="methods-2">
-      Methods
-    </h3>
-    <ul>
-      <li>
-        <p>
-          Constructor (public)
-        </p>
-        <ul>
-          <li>Rating(rating: int, comment : string, user_id: int, reviewed_user_id:int) - Constructes a Rating
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Getters (public)
-        </p>
-        <ul>
-          <li>get_comment():string - Returns the text description tied to a rating
-          </li>
-          <li>get_reviewed_user_id():int - Returns the ID of the user being rated
-          </li>
-          <li>get_user_id():int - Returns the ID of the user who is rating another user
-          </li>
-          <li>get_created_at():datetime - Returns time data for time of class creation
-          </li>
-          <li>get_updated_at():datetime - Returns time data for time of last update to class
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Setters (public)
-        </p>
-        <ul>
-          <li>set_rating(rating: tinyint) - Updates the rating review number
-          </li>
-          <li>set_comment(comment: string) - Updates the comment for the review
-          </li>
-          <li>set_reviewed_user_id(reviewed_user_id: int) - Updates the reviewed user ID
-          </li>
-          <li>set_user_id(user_id: int) - Updates the reviewing user ID
-          </li>
-          <li>set_created_at(date: datetime) - Updates created_at
-          </li>
-          <li>set_updated_at(date: datetime) - Updates updated_at
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Helpers (private)
-        </p>
-        <ul>
-          <li>validate_rating(rating: tinyint) - Ensures that the rating is valid (i.e A value that is held in ALLOWED_REVIEW_VALS)
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Relation Helpers (public):
-        </p>
-        <ul>
-          <li>save() - Saves and persistes the Rating
-          </li>
-          <li>users() - Returns an array of User that have been rated.
-          </li>
-          <li>sublet() - Returns an array of Sublets that is held by the rated user.
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h2 id="624favoritepackage">
       6.2.4 Favorite Package
     </h2>
     <p>
       <img src="https://i.imgur.com/3X5iN2c.png" alt="SubbyFavouriteDiagram">
     </p>
-    <h3 id="favouriteclass">
-      Favourite Class
-    </h3>
-    <ul>
-      <li>
-        <strong>FavouritesLister:</strong> Gathers and returns all favourites for sublet listings display purposes
-      </li>
-      <li>
-        <strong>FavouritesManager:</strong> Creates or destroys favourites from the database
-      </li>
-    </ul>
-    <h3 id="methods-3">
-      Methods
-    </h3>
-    <ul>
-      <li>
-        <p>
-          Constructor (public)
-        </p>
-        <ul>
-          <li>Favourite(user_id: int, sublet_id: int) - Constructes Favourite
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Getters (public)
-        </p>
-        <ul>
-          <li>get_favourite_id():int - Returns favourite ID
-          </li>
-          <li>get_sublet_id():int - Returns the favourited sublet ID
-          </li>
-          <li>get_user_id():int - Returns user ID the favourite is tied to
-          </li>
-          <li>get_created_at():datetime - Returns time data for time of class creation
-          </li>
-          <li>get_updated_at():datetime - Returns time data for time of last update to class
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Setters (public)
-        </p>
-        <ul>
-          <li>set_created_at(date: datetime) - Updates created_at
-          </li>
-          <li>set_updated_at(date: datetime) - Updates updated_at
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Relation Helpers (public):
-        </p>
-        <ul>
-          <li>save() - Saves and persistes Favourite
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h2 id="625reportpackage">
       6.2.5 Report Package
     </h2>
     <p>
-      <img src="https://i.imgur.com/cqmxUjY.png" alt="UserPackage">
+      <img src="https://i.imgur.com/Gb3Mdlx.jpg" alt="UserPackage">
     </p>
-    <h3 id="reportclass">
-      Report Class
-    </h3>
-    <h4 id="methods-4">
-      Methods
-    </h4>
-    <ul>
-      <li>
-        <p>
-          Constructor (public)
-        </p>
-        <ul>
-          <li>Report(user_id: int, sublet_id: int, issue: string, description: string) - Class Constructor. All non-null fields are enforced except datetime frields, which are recorded by system automatically.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Getters (public): only available for admins
-        </p>
-        <ul>
-          <li>get_report_id():int
-          </li>
-          <li>get_created_at():datetime
-          </li>
-          <li>get_updated_at():datetime
-          </li>
-          <li>get_issue():string
-          </li>
-          <li>get_user_id():int
-          </li>
-          <li>get_description():string
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Setters (public): only available for admins
-        </p>
-        <ul>
-          <li>set_report_id(report_id: int)
-          </li>
-          <li>set_created_at(date: datetime)
-          </li>
-          <li>set_updated_at(date: dateime)
-          </li>
-          <li>set_issue(issue: string)
-          </li>
-          <li>set_description(description: string)
-          </li>
-          <li>set_user_id(user_id: int)
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Helpers (private):
-        </p>
-        <ul>
-          <li>test_description(description: string) - Tests the descriptions user has entered. Reject the report if the description is not valid. For example: a series of punctuations, Non english letters, a series of random letters.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>
-          Relation Helpers (public):
-        </p>
-        <ul>
-          <li>save() - Saves the Report if no error is presented by the prviate helper methods.
-          </li>
-          <li>users() - Returns an array of User who has been reported. Only available for admins.
-          </li>
-          <li>sublets() - Returns an array of Sublets that has been reported. Only available for admins.
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h1 id="7datadictionary">
       7. Data Dictionary
     </h1>
@@ -840,6 +576,18 @@
     <h1 id="8revisionhistory">
       8. Revision History
     </h1>
+    <h2 id="version2">
+      Version 2
+    </h2>
+    <ul>
+      <li>
+        <strong>Section 6</strong>
+        <ul>
+          <li>Alex Kirsopp [6.2.1] [2018-08-09]
+          </li>
+        </ul>
+      </li>
+    </ul>
     <h2 id="version10">
       Version 1.0
     </h2>
@@ -848,71 +596,65 @@
         <p>
           <strong>Section 1</strong>
         </p>
-      </li>
-      <li>
-        <p>
-          Sarah Younes [1.0 - 1.1] [2018-07-01]
-        </p>
-      </li>
-      <li>
-        <p>
-          Sandra Sung [1.2 - 1.4] [2018-07-03]
-        </p>
+        <ul>
+          <li>Sarah Younes [1.0 - 1.1] [2018-07-01]
+          </li>
+          <li>Sandra Sung [1.2 - 1.4] [2018-07-03]
+          </li>
+        </ul>
       </li>
       <li>
         <p>
           <strong>Section 2</strong>
         </p>
-      </li>
-      <li>
-        <p>
-          Jingchi Chen [2.1 - 2.3] [2018-07-04]
-        </p>
+        <ul>
+          <li>Jingchi Chen [2.1 - 2.3] [2018-07-04]
+          </li>
+          <li>Ronald Lwin [2.1 - 2.7] [2018-07-14]
+          </li>
+        </ul>
       </li>
       <li>
         <p>
           <strong>Section 3</strong>
         </p>
-      </li>
-      <li>
-        <p>
-          Sandra Sung [3.1 - 3.5] [2018-07-03]
-        </p>
+        <ul>
+          <li>Sandra Sung [3.1 - 3.5] [2018-07-03]
+          </li>
+        </ul>
       </li>
       <li>
         <p>
           <strong>Section 4</strong>
         </p>
+        <ul>
+          <li>Alex Kirsopp [4.1] [2018-06-20]
+          </li>
+          <li>Sarah Younes [4.1.2 - 4.1.4] [2018-07-02]
+          </li>
+        </ul>
       </li>
       <li>
         <p>
-          Alex Kirsopp [4.1] [2018-06-20]
+          <strong>Section 5</strong>
         </p>
-      </li>
-      <li>
-        <p>
-          Sarah Younes [4.1.2 - 4.1.4] [2018-07-02]
-        </p>
+        <ul>
+          <li>Ronald Lwin [5.1] [2018-07-17]
+          </li>
+        </ul>
       </li>
       <li>
         <p>
           <strong>Section 6</strong>
         </p>
-      </li>
-      <li>
-        <p>
-          Alex Kirsopp [6.2.1] [2018-06-27]
-        </p>
-      </li>
-      <li>
-        <p>
-          Xiaochao Luo [6.2.5] [2018-07-01]
-        </p>
-      </li>
-      <li>
-        <p>
-          Sarah Younes [6.1] [2018-07-02]
-        </p>
+        <ul>
+          <li>Alex Kirsopp [6.2.1] [2018-06-27]
+          </li>
+          <li>Xiaochao Luo [6.2.5] [2018-07-01]
+          </li>
+          <li>Sarah Younes [6.1] [2018-07-02]
+          </li>
+        </ul>
       </li>
       <li>
         <p>

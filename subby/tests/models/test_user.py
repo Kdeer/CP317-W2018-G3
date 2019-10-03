@@ -8,7 +8,6 @@ class UserTestCase(TestCase):
             email = 'test@test.com',
             is_admin = False,
             password = 'password123',
-            salt = 'saltysalt',
             created_at = pytz.utc.localize(datetime.datetime.now()),
             updated_at = pytz.utc.localize(datetime.datetime.now())
         )

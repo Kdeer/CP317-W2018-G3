@@ -1,71 +1,77 @@
 {% extends 'application/base.html' %}
 {% block content %}
 
-    <div class="container">
-
-        <div class="jumbotron jumbo-container">
-            <div class="container">
-                <h1 class="display-4">Account Home</h1>
-                <a class="btn btn-secondary" href="{% url 'subby:create_sublet' %}">Post Sublet</a>
-                <a class="btn btn-secondary" href="{% url 'subby:SubletList' %}">View All Posts</a>
-				<a class="btn btn-secondary" href="{% url 'subby:RatingList' user_id=id%}">View My Ratings</a>
-<!--                 <form action="{% url 'subby:RatingList' user_id=id%}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="listerid" value="{{ id }}">
-                    <button type="submit" class="btn btn-secondary mt-3">View
-                        your ratings
-                    </button>
-                </form> -->
-                <hr class="my-4">
-                <form action="{% url 'subby:update_user_info' %}" method="POST">
-                    {% csrf_token %}
-                    <fieldset class="edit-disabled-fieldset" disabled>
-                        <div class="form-group">
-                            <label for="account-page-email">Email:</label>
-                            <input type="email" id="account-page-email" name="email" class="form-control"
-                                   placeholder="Email"
-                                   value="{{ email }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="account-page-fn">First Name:</label>
-                            <input type="text" id="account-page-fn" name="first" class="form-control"
-                                   placeholder="First Name"
-                                   value="{{ first_name }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="account-page-ln">Last Name:</label>
-                            <input type="text" id="account-page-ln" name="last" class="form-control"
-                                   placeholder="Last Name"
-                                   value="{{ last_name }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="account-page-pn">Phone Number:</label>
-                            <input type="text" id="account-page-pn" name="phone" class="form-control"
-                                   placeholder="Phone Number"
-                                   value="{{ phone_number }}">
-                        </div>
-                    </fieldset>
-                    <fieldset class="perm-disabled-fieldset" disabled>
-                        <div class="form-group">
-                            <label for="account-page-creation">Creation Date:</label>
-                            <input type="text" id="account-page-creation" class="form-control"
-                                   placeholder="Creation Date"
-                                   value="{{ created_at }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="account-page-updated">Last Updated:</label>
-                            <input type="text" id="account-page-updated" class="form-control" placeholder="Last Updated"
-                                   value="{{ updated_at }}">
-                        </div>
-                    </fieldset>
-                    <button type="submit" class="btn btn-secondary acc-submit-btn" style="display: none;">Submit
-                        Changes
-                    </button>
-
-                </form>
-                <button type="button" class="btn btn-secondary edit-btn">Edit</button>
-            </div>
-        </div>
-    </div>
+<div class="container">
+	
+	<div class="jumbotron jumbo-container">
+		<div class="container">
+			<h1 class="display-4">Account Home</h1>
+			<a class="btn btn-secondary" href="{% url 'subby:create_sublet' %}">Post Sublet</a>
+			
+			<!-- <a class="btn btn-secondary" href="{% url 'subby:SubletList' %}">View All Posts</a> -->
+			<a class="btn btn-secondary" href="{% url 'subby:my_sublets' %}">My Postings</a>
+			<a class="btn btn-secondary" href="{% url 'subby:RatingList' user_id=id%}">View My Ratings</a>
+			
+			
+			
+			<a class="btn btn-secondary" href="{% url 'subby:favourite_list' %}">View Favourites</a>
+			
+			<hr class="my-4">
+			<form action="{% url 'subby:update_user_info' %}" method="POST">
+				{% csrf_token %}
+				<fieldset class="edit-disabled-fieldset" disabled>
+					<div class="form-group">
+						<label for="account-page-email">Email:</label>
+						<input type="email" id="account-page-email" name="email" class="form-control"
+						placeholder="Email"
+						value="{{ email }}" disabled>
+					</div>
+					<div class="form-group">
+						<label for="account-page-username">Username:</label>
+						<input type="username" id="account-page-username" name="username" class="form-control"
+						placeholder="Username"
+						value="{{ username }}" disabled>
+					</div>
+					<div class="form-group">
+						<label for="account-page-fn">First Name:</label>
+						<input type="text" id="account-page-fn" name="first" class="form-control"
+						placeholder="First Name"
+						value="{{ first_name }}">
+					</div>
+					<div class="form-group">
+						<label for="account-page-ln">Last Name:</label>
+						<input type="text" id="account-page-ln" name="last" class="form-control"
+						placeholder="Last Name"
+						value="{{ last_name }}">
+					</div>
+					<div class="form-group">
+						<label for="account-page-pn">Phone Number:</label>
+						<input type="text" id="account-page-pn" name="phone" class="form-control"
+						placeholder="Phone Number"
+						value="{{ phone_number }}">
+					</div>
+				</fieldset>
+				<fieldset class="perm-disabled-fieldset" disabled>
+					<div class="form-group">
+						<label for="account-page-creation">Creation Date:</label>
+						<input type="text" id="account-page-creation" class="form-control"
+						placeholder="Creation Date"
+						value="{{ created_at }}">
+					</div>
+					<div class="form-group">
+						<label for="account-page-updated">Last Updated:</label>
+						<input type="text" id="account-page-updated" class="form-control" placeholder="Last Updated"
+						value="{{ updated_at }}">
+					</div>
+				</fieldset>
+				<button type="submit" class="btn btn-secondary acc-submit-btn" style="display: none;">Submit
+					Changes
+				</button>
+				
+			</form>
+			<button type="button" class="btn btn-secondary edit-btn">Edit</button>
+		</div>
+	</div>
+</div>
 
 {% endblock %}

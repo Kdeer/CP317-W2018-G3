@@ -2,72 +2,103 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="jumbotron jumbo-container" style="min-height: 90vh;">
-            <div class="container">
-                <h2>Your Listings</h2>
-                <br>
-                {% for sublet in object_list %}
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <!-- <a href="{% url 'subby:SubletDetail' sublet.id %}"><h3 id="sublet_title">{{ sublet.title }}</h3></a> -->
-                                <div onclick="window.location='{% url 'subby:SubletDetail' sublet.id %}';"
-                                     style="cursor:pointer;">
-                                    <h4 id="sublet_title">{{ sublet.title }}</h4>
-                                    {% for i in image_list %}
-                                        {% if i.sublet.id == sublet.id %}
-                                            <img src="{{ i.image.url }}" class="img-fluid" height="200"
-                                                 width="200"/>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            <div class="col-md-3 mt-1">
-                                <h5>Address</h5>
-                                <p>{{ sublet.street_address }}, {{ sublet.city }}</p>
-                                <h5>Rent</h5>
-                                <p>${{ sublet.price }}</p>
-                            </div>
-                            <div class="col-md-5 mt-1">
-                                <h5>Description</h5>
-                                <p>{{ sublet.summary }}</p>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <br>
-                {% endfor %}
+<div class="container">
+	<div class="jumbotron jumbo-container" style="min-height: 90vh;">
+		<div class="container">
+			<h2>Listings</h2>
+			<br>
+			{% for sublet in object_list %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<!-- <a href="{% url 'subby:SubletDetail' sublet.id %}"><h3 id="sublet_title">{{ sublet.title }}</h3></a> -->
+						<div onclick="window.location='{% url 'subby:SubletDetail' sublet.id %}';"
+						style="cursor:pointer;">
+							<h4 id="sublet_title">{{ sublet.title }}</h4>
+							{% for i in image_list %}
+							{% if i.sublet.id == sublet.id %}
+							<img src="{{ i.image.url }}" class="img-fluid" height="200"
+							width="200"/>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-3 mt-1">
+						<h5>Address</h5>
+						<p>{{ sublet.street_address }}, {{ sublet.city }}</p>
+						<h5>Rent</h5>
+						<p>${{ sublet.price }}</p>
+					</div>
+					<div class="col-md-2 mt-1">
+						<h5>Description</h5>
+						<p>{{ sublet.summary }}</p>
+						<h5>Offered By</h5>
+						<p style="color:green;"><a href="{% url 'subby:RatingList' user_id=sublet.user.id %}">{{ sublet.user.username }}</a></p>
+					</div>
+					<div class="col-md-4">
+						<div class="sublet-detail-map" style="min-height: 100%; height: 100%; width: 90%;" id="map{{sublet.id}}"></div>
+					</div>
 
-                {% if is_paginated %}
-                    <div class="container">
-                        <ul class="pagination justify-content-center" id="pagination_row">
-                            <li class="page-item">
-                                <a href="{% url 'subby:SubletList' %}?page=1" class="page-link">First</a>
-                            </li>
-                            {% if page_obj.has_previous %}
-                                <li class="page-item">
-                                    <a href="{% url 'subby:SubletList' %}?page={{ page_obj.previous_page_number }}"
-                                       class="page-link">{{ page_obj.previous_page_number }}</a>
-                                </li>
-                            {% endif %}
-                            <li class="page-item active">
-                                <a href="{% url 'subby:SubletList' %}?page={{ page_obj.number }}"
-                                   class="page-link">{{ page_obj.number }}</a>
-                            </li>
-                            {% if page_obj.has_next %}
-                                <li class="page-item">
-                                    <a href="{% url 'subby:SubletList' %}?page={{ page_obj.next_page_number }}"
-                                       class="page-link">{{ page_obj.next_page_number }}</a>
-                                </li>
-                            {% endif %}
-                            <li class="page-item">
-                                <a href="{% url 'subby:SubletList' %}?page=last" class="page-link">Last</a>
-                            </li>
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endblock %}			
+				</div>
+				<hr>
+			</div>
+			<br>
+			{% endfor %}
+
+			{% if is_paginated %}
+			<div class="container">
+				<ul class="pagination justify-content-center" id="pagination_row">
+					<li class="page-item">
+						<a href="{% url 'subby:SubletList' %}?page=1" class="page-link">First</a>
+					</li>
+					{% if page_obj.has_previous %}
+					<li class="page-item">
+						<a href="{% url 'subby:SubletList' %}?page={{ page_obj.previous_page_number }}"
+						class="page-link">{{ page_obj.previous_page_number }}</a>
+					</li>
+					{% endif %}
+					<li class="page-item active">
+						<a href="{% url 'subby:SubletList' %}?page={{ page_obj.number }}"
+						class="page-link">{{ page_obj.number }}</a>
+					</li>
+					{% if page_obj.has_next %}
+					<li class="page-item">
+						<a href="{% url 'subby:SubletList' %}?page={{ page_obj.next_page_number }}"
+						class="page-link">{{ page_obj.next_page_number }}</a>
+					</li>
+					{% endif %}
+					<li class="page-item">
+						<a href="{% url 'subby:SubletList' %}?page=last" class="page-link">Last</a>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	// Initialize and add the map
+	function initMap() {
+		{% for sublet in object_list %}
+		// The location of Uluru
+		var sublet_coordinate = {lat: {{sublet.latitude}}, lng: {{sublet.longitude}}};
+		// The map, centered at Uluru
+		var map = new google.maps.Map(
+		document.getElementById('map{{sublet.id}}'), {zoom: 17, center: sublet_coordinate,
+			scrollwheel: false,
+
+		});
+		// The marker, positioned at Uluru
+		var marker = new google.maps.Marker({position: sublet_coordinate, map: map});
+		{% endfor %}
+	}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWKqqOWg7D2pCCKgsGe_ISDMUyEkkxXzY&libraries=places&callback=initMap"
+        async defer></script>
+
+
+{% endblock %}

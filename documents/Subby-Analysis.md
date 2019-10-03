@@ -29,10 +29,10 @@ Version 1.2 - 06/27/18
 
 Improving the current state of subletting would be beneficial to students throughout our target market (KW Region), as we will be able to consolidate listings posted on non-specialized platforms, as well as provide quality assurance on the posted listings. The database of sublet listings will be organized based on standard filters for renting such as location, rating, etc.
 
-The website will display the listing information found in the database in the form of text, diagrams, or maps. The website will allow administrators to insert, edit, and remove entries from the database/website at their discretion. A website user would be allowed access to the data on the front-end and browse through the listings on the site, as well as post new listings. 
+The website will display the listing information found in the database in the form of text, diagrams, or maps. The website will allow administrators to insert, edit, and remove entries from the database/website at their discretion. The general users would be allowed access to the data on the front-end and browse through the listings on the website, as well as posting new listings.
 
 ## 1.1. Purpose
-The current state of subletting is disorganized and inconvenient to use, with the most popular platform being FaceBook--a site not even designed for posting sublets. Subby will allow for listings on FaceBook, Reddit, and other sites to be consolidated, thus providing  a more comprehensive product than what is currently available to the student sublettng market. 
+The current state of subletting is disorganized and inconvenient to use, with the most popular platform being Facebook - a site not even designed for process of subletting. Subby will allow for listings on Facebook, Reddit, and other sites to be consolidated, thus providing a more comprehensive product than what is currently available to the student sublettng market.
 
 The idea is to provide:
 1. **Subletters:**
@@ -40,7 +40,7 @@ The idea is to provide:
     * Ability to contact sublessors through site or through provided contact information
     * Security in browsing since all listings will go through a verification process to confirm legitimacy in ownership/ability to lease
 2. **Sublessors:**
-    * Ability to post new sublet listings according to site policy
+    * Ability to post new sublet listings that complies with site policy
     * Ability to modify existing listings in case any information changes
     * Allows for listings to be seen by and be contacted by verified users
     * Provide an interface to let one know the current competitive pricing in the property area
@@ -138,10 +138,10 @@ The Reports UI's will be available to both regular and admin users, so records w
 # 3. Requirements
 
 ## 3.1 Database
-Administrators are allowed to modify website content when logged in, while general users may view website content, insert content, and modify their inserted content. 
+Administrators are allowed to modify and delete website content when logged in, while general users may view website content, insert content, and modify their inserted content. 
 
 ### 3.1.1. Administrator Terms of Use
-An administrator is one of two actors in the system, and is allowed to insert, edit, and remove both users and content from the site.
+An administrator is one of two actors in the system, and is allowed to insert, edit and remove both users and content from the site.
 
 ### 3.1.2. User Terms of Use
 The user is the second of two actors in the system, and is allowed to insert content into the site and edit their inserted content.
@@ -152,7 +152,7 @@ The user is the second of two actors in the system, and is allowed to insert con
 
 This UML diagrams displays the various models required to accomplish the above use-cases, as well as their attributes and relations.
 
-![SubbyUML](https://i.imgur.com/iBcv1EO.png)
+![SubbyUML](https://i.imgur.com/PdYF7h9.jpg)
 
 # 5. User Interface Specification
 
@@ -199,7 +199,7 @@ A sample task list for the user:
 The user opens a web browser and navigates to the Subby management tool login page. The user enters valid admin credentials and logs in by selecting the "Login" button.
 
 **Task 2: Creating a user. (Prerequisites: Task 1 as Administrator)**
-An administrator selects the "Create User" which generates a overlayed display that prompts them to fill in the following fields:
+An administrator selects the "Create User" which generates an overlayed display that prompts them to fill in the following fields:
 * Username
 * Password
 * E-mail Address
@@ -228,7 +228,7 @@ An administrator presses the "Logout" button in the top right corner of the mana
 #### User Tasks:
 
 **Task 1: Creating an account using Subby sign-up interface.**
-The user navigates to the home page of Subby and presses the "Register" button in the top right corner of the website, creating an overlay over the current page prompting the user to enter the following information:
+The user navigates to the home page of Subby and presses the "Register" button in the top-right corner of the website, creating an overlay over the current page prompting the user to enter the following information:
 * Username
 * Password
 * E-mail
@@ -242,11 +242,11 @@ Additionally, the user must pass a captcha to ensure human entry. A link to term
 Upon success, the overlay will disappear and be replaced by a pop-up informing the user that a verification email has been sent to their address. Upon failure, the form will highlight where the errors are in red around the specific entries and prompt the user to enter their information again.
 
 **Task 2: Logging into Subby using login interface. (Prerequisites: Task 7)**
-The user logs by selecting the "Login" button in the top right corner of the web page. This creates an overlay over the current page prompting the user to enter their login information:
+The user logs in by selecting the "Login" button in the top-right corner of the web page. This creates an overlay over the current page prompting the user to enter their login information:
 * Username/E-mail
 * Password
 
-Upon entering their credentials, the user selects the "Sign in" button at the bottom of the overlay, which then indicates to the user whether or not their credentials are valid or not. If the former, the user is redirected to the home page, otherwise the overlay displays an error message indicating that invalid credentials are entered.
+Upon entering their credentials, the user selects the "Sign-in" button at the bottom of the overlay, which then indicates to the user whether or not their credentials are valid or not. If the former, the user is redirected to the home page, otherwise the overlay displays an error message indicating that invalid credentials are entered.
 
 **Task 3: Inserting a new sublet listing. (Prerequisites: Task 8)**
 The user selects the "Post Listing" button in the top right corner of the page. This loads a new page containing a form for the user to fill out about their listing. Such listing fields include: 
@@ -264,10 +264,10 @@ Upon entering the relevant information, the user presses the "Post" button at th
 The user navigates to their "My Listings" to view all their currently posted listings. The user selects the "Edit" hyperlink next to a listing, and is directed to a new page containing a form with the listing information. The user is able to edit any information they entered in Task 9, as well as have the ability to mark the listing as "Sold". Upon making the relevant changes, the user presses the "Save" button at the bottom of the form to confirm any changes they made. The user may also cancel editing by pressing the "Cancel" button next to the "Save" button.
 
 **Task 5: Viewing/filtering/selecting posted listings.**
-The user navigates to the home page of Subby and enters a location into the search bar. Subsequently, a new page containing top listings closest to the location specified is loaded. The user is presented with filter options on the right hand side of the page, which allows the user to refine their results to their liking. Once the desired filters are selected, the user presses the "Filter" button to view the corresponding search results. Then, the user selects the listing of their interest, redirecting them to the individual listing page which displays all the relevant information about the sublet. Additionally, The user has the ability to view the sublessor contact information on the right hand side of the page if they are interested in making an offer.
+Task 5: Viewing/filtering/selecting posted listings. The user navigates to the home page of Subby and enters a location into the search bar. Subsequently, a new page containing top listings closest to the location specified is loaded. The user is presented with filter options on the right hand side of the page, which allows the user to refine their results to their liking. Once the desired filters are selected, the user presses the "Filter" button to view the corresponding search results. Then, the user selects the listing of their interest, redirecting them to the individual listing page which displays all the relevant information about the sublet. Additionally, The user has the ability to contact the sublessor through "Contact Sublessor?" option on the bottom portion of the page, if they are interested in making an offer.
 
 **Task 6: Rating a listing (Prerequisites: Task 8)**
-The user has navigates to an individual listings page. The user hovers over the stars on the listings page at a desired rating level and press down when they are satisfied with the rating they are giving. The user presses the "Submit" button allowing for the rating to go through.
+Task 6: Rating a listing (Prerequisites: Task 8) The user has navigates to individual pages with listing details. The user hovers over the stars on the "Write a Review" page (navigated to with "View Reviews" option on each listing details page) at a desired rating level and press down when they are satisfied with the rating they are giving for the sublessor. The user then presses the "Submit" button allowing for the rating to go through.
 
 # 6.0. Revision History
 

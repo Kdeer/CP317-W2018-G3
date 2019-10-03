@@ -32,7 +32,7 @@ Version 1.0 – 5/20/18
 # 1. Introduction
 
 ---
-A major issue many students face in their time at post-secondary school is the dreaded one-year lease. Most students scramble to find potential candidates to take over their lease as their semester comes to an end. This is where Subby comes into play: Subby is an easy to use website that enables students to either sublet their place or simply find a sublet of their own. The goal for Subby is to create a one stop marketplace for sublets as opposed to the current struggle of students using multiple sites. The site comes with a variety of useful features such as a localized map and search priorities that allow for a visually appealing and detailed search.
+A major issue many students face in their time at post-secondary school is the dreaded one-year lease. Most students scramble to find potential candidates to take over their lease as their semester comes to an end. This is where Subby comes into play: Subby is an easy-to-use website that enables students to either sublet their place or simply find a sublet of their own. The goal of Subby is to create a one-stop marketplace for sublets as opposed to the current struggle of students using multiple sites. The site comes with a variety of useful features such as a localized map and search priorities that allow for a visually appealing and detailed search.
 
 
 ### 1.1. Purpose
@@ -70,20 +70,19 @@ location), search results can be further refined by:
  * **Size** – number of beds/bedrooms/washrooms
  * **Distance from Campus** -- distance range from a given university campus
  * **Convenience** -- how convenient is it to reach a nearby plaza, gym, etc
- * **Availability** -- move in date
+ * **Availability** -- move-in date
  * **Rental Period** -- users can sublet for periods of four or eight months
- * **Keyword Search** -- search for features and amenities such as ‘onsite laundry’
- * **Number of Roommates** -- the number of roommates expected to occupy residence during stay
+ * **Keyword Search** -- search for features and amenities such as ‘on-site laundry’
+ * **Number of Roommates** -- the number of roommates expected to occupy residence during their stay
  * **Leasee Rating** -- the star-point rating of the lease owner and the unit from a scale of 0 to 5 stars
 
-Once a sublet seeker finds a unit to their liking they must create a profile of their own using a university email
-to be able to add the property in question to their ‘Wish List.’ Otherwise, the sublet seeker may directly contact the lessee by sending them a message of interest through the communication form which is found on every listing
-page.
+Once a sublet seeker finds a unit to their liking, they must create a profile of their own using a university email
+to be able to add the property to their ‘Wish List.’ Otherwise, the sublet seeker may directly contact the lessee by sending them a message of interest through the communication form which is found on every listing page.
 
 **Subleasing with Subby:**
-To promote available rental units, users must first register and create an account using a valid university email. Once a Subby account holder, a user can create a listing for their residence(s) under ‘My Listings’ and promote said listing through a title, description, up to 20 captioned photographs and a myriad of search fields, including price, property type, rental period and size. 
+To promote available rental units, users must first register and create an account using a valid university email. Once the user has successfully registered, they may create a listing for their residence(s) under ‘My Listings’ and promote said listing through a title, description, location and up to 20 captioned photographs. A myriad of search fields including price, property type, rental period and size will be available to make searching easier. 
  
-Moreover, registered users can create personalized profiles so that potential subtenants may get to know the lessee a little better; under ‘My Profile’, a user can upload a photo, include their name, contact information, and profile description.
+Moreover, registered users can create personalized profiles so that potential subtenants may get to know the lessee a little better. Under "My Profile," a user can include their name, contact information, and profile description in addition to uploading a profile picture.
 
 
 ### 2.1. Product Perspective
@@ -95,7 +94,7 @@ The website will utilize Google Maps API to help users locate and post sublets i
 ![Use Case Chart](https://i.imgur.com/6lY7PvN.png)
 
 #### 2.1.1. Front-End Users
-The front-end user interface will be simplistic in design to allow users of all computer literacy to easily navigate around the site. The homepage will consist of a search bar in the center of the page, where students can search for sublets. Additionally, a sign-in link and a register link will be located at the top of the homepage. Since the website is targeted towards students, individuals will have to register using a university or college email address. Accordingly, the amount of fake accounts can be reduced, resulting in less spam.
+The front-end user interface will be simplistic in design to allow users of all computer literacy to navigate the site. The homepage will consist of a search bar in the center of the page where students can search for sublets. Additionally, a sign-in link and a register link will be located at the top-left of the homepage. Since the website is targeted towards students, individuals will have to register using a university or college email address. Accordingly, the amount of fake accounts can be reduced, resulting in less spam.
 
 There will be two main feature sets available to front-end users:
 1. **Lease Owner – the individual looking to sublet their place**
@@ -120,7 +119,7 @@ Here are the main features available for back-end users:
 * **Provide Customer Service:** Individuals will be able to contact a Subby administrator by email if any problems or questions arise. Administrators will be able to reset passwords and email addresses to ensure users have account access.
 
 #### 2.1.3. Additional Features
-* **Review:** Both sublet seekers and lease owners can rate each other based on their experience on a scale of 0 to 5. For instance, the sublet seeker can rate their experience with the lease owner based on satisfaction of stay and the lease owner can rate their experience with the sublet seeker based on payment reliability and property damage or lack thereof. This will allow individuals to trust others more freely if they have good reviews.
+* **Review:** Both sublet seekers and lease owners can rate each other based on their experience on a scale of 0 to 5. For instance, the sublet seeker can rate their experience with the lease owner based on the satisfaction of their stay and the lease owner can rate their experience with the sublet seeker based on payment reliability and property damage (or lack thereof). This will allow individuals to trust others more freely if they have good reviews.
 
 * **Competitive Pricing:** On the search results page, there will be two boxes that show the competitive pricing. One box will show the lowest rent price set up by lease owners of rooms (same type) in same building, or by leases of same criteria [same criteria? as in same search results?]. The other box will show the highest bidding set by sublet seekers for either rooms (same type) in same building or rooms that fulfill same criteria. The purpose of this feature is to show the competitive pricing of each unit listed. This way, people will have better understanding of how much they should be paying for a sublet or of how much they should charge for subletting their unit.
 
@@ -162,10 +161,10 @@ Every individual will have the option to search for sublets. Registered users wi
 Subby is made for students with basic knowledge of how to navigate a website. The website will be designed to be as straightforward as possible so even the most non-technological individuals can use it.
 
 ### 2.4. Constraints
-In regards to the auction/bidding feature, it may prove difficult to identify the validity of the bids; users can potentially make fake accounts and bid on their own property in order to balloon their profits. In order to mitigate this, we plan to make individuals sign up with their school email since they should only have one school email.
+Google API only allows for 25,000 free map loads per day. Subby wishes to make this project as cost-efficient as possible so if the site exceeds the 25,000 map loads, the map will not be displayed. However, Subby creators do not expect the site to exceed 25,000 map loads per day during its first few years of release.  
 
 ### 2.5. Assumptions and Dependencies
-Although anyone can visit and search the rental database, to contact a lessee or post a unit to sublet, users must first register with a valid university or college email. Additionally, individuals are expected to have access to a device with Wi-Fi and use a browser compatible with Google Maps.
+Anyone can visit and search the rental database. However, to post a unit to sublet, users must first register with a valid university or college email. Additionally, individuals are expected to have access to a device with Wi-Fi and use a browser compatible with Google Maps.
 
 # 3. Specific Requirements
 
@@ -175,12 +174,11 @@ Unless otherwise stated, all inputs listed here will be stored in the applicatio
 
 * **User Management**
     * The user will be allowed to change their password by first providing their current password, then the new password, and lastly confirming the new password to ensure no typos have been made.
-The user will be able to change their email with a simple form, validated against typical email format.
     * All changes to user account information will have to be confirmed through email to ensure account security.
-    * The user will be able to enter their own address for the application to more accurately determine which Sublet records may be relevant to them.
+    * The user will be able to enter an address of a property they are interested in for the application to more accurately determine which Sublet records may be relevant to them.
 * **User ‘Favorites’ View**
-    * All listings with a matching Favorite record will be displayed to the user, as well as links to view the full listing and delete the Favorite record.
-    * Favorites which no longer have an existing Sublet record will still be displayed, with a notification that the listing is no longer available.
+    * All listings with a "matching" Favorite record (sublets that relate to the property a user has favourited) will be displayed to the user as well as links to view the full listing and delete the Favorite record.
+    * Favorites which no longer have an existing Sublet record will no longer be displayed in a user's favourite list, with a notification that the listing is no longer available.
 * **Sublet Listings**
     * Will list all sublets that fall within a default radius from the user (determined by IP geolocation or browser functionality) unless otherwise defined by the user.
     * Each listing will display its rating as a one-decimal float (the average of all ratings it has), as well as address, availability date, and distance.
@@ -190,7 +188,7 @@ The user will be able to change their email with a simple form, validated agains
     * Similar filters and distance options will be available, as with the Sublet Listings page.
     * The same limits for maximum number of listings per area will be imposed for Sublets Wanted.
 * **Listing Management**
-    * A list of an individual User’s Sublet or Sublet Wanted listings will appear on this page, with the address and various actions such as ‘edit’ or ‘delete’. A listing may be edited or created, and may have photos, descriptions, or attributes added to it. A maximum of 8 photos will be allowed, and descriptions limited to short text (<500 characters)
+    * A list of Sublets available or "Sublet Wanted" listings will appear on this page, with the address and various actions such as ‘edit’ or ‘delete’. A listing may be edited or created and may have photos, descriptions, or attributes added to it. A maximum of 8 photos will be allowed, and descriptions limited to short text (<500 characters)
 * **Review Submission**
     * An integer rating range of 0 to 5 is allowed to be submitted along with a short text description. The description will be sanitized for safety of the database and application.
 * **User Administration**
@@ -202,20 +200,20 @@ The user will be able to change their email with a simple form, validated agains
 * The system will perform basic validation for all models. For example, a User cannot be created without an email address (which must also pass a simple email format validation), and a Sublet posting cannot be made without an availability date.
 * The system will ensure that users are not creating more than their administrator-defined allowed postings for their geographic area.
 * The system will allow administrators to ban users, removing their posts and account access but maintaining the user record to prevent later sign-ups from that address. Deleting a user performs the same task, but also removes the user record.
-* The system will delete dependent records when a model is removed. For example, deleting a Sublet posting will remove Favorite records associated with it, and deleting a User would remove the Sublet postings created by them.
+* The system will delete dependent records when a model is removed. For example, deleting a Sublet posting will delete Favorite records associated with it (i.e. tell the user that it was sold), and deleting a User would remove the Sublet postings created by them.
 * Deleting a Sublet posting will also delete Favorite records associated with it. A notification may be displayed to the user to show that Favorite records have been removed.
 
 ### 3.3. Logical Database Requirements
 * Several tables with many attributes will be required to maintain the data for this project. All tables will have a unique ID as the primary key for the table.
-    * **Users table:** The Users table will require a distinct and unique email address, and salted/hashed passwords will also be stored. Two user types will be supported- regular clients who sign up from the web application and administrators who will have access backend functionality, which can be defined as a tinyint and treated as a boolean in the business logic of the application. Account status (such as bans or strikes against the account) will also be stored. Note that users can have zero-to-many relationships with the Sublets, Reviews, and Favorites tables.
+    * **Users table:** The Users table will require a distinct and unique email address, and salted/hashed passwords will also be stored. Two user types will be supported - regular clients who sign up from the web application and administrators who will have access to back-end functionality, which can be defined as a "tinyint" and treated as a boolean in the business logic of the application. Account status (such as bans or strikes against the account) will also be stored. Note that users can have zero-to-many relationships with the Sublets, Reviews, and Favorites tables.
     * **Sublets table:** Analogous to postings, the Sublets table will include address information (longitude/latitude as provided by Google’s Maps API), availability date, pricing, and so on. An individual sublet posting will be owned by a User through their distinct ID as a foreign key. As the ‘Wanted’ feature would cover many of the same attributes as a regular sublet, conditional logic or a ‘boolean’-treated field would determine whether a Sublet record is for a physically offered sublet, or a sublet-wanted ad.
     * **Reviews table:** Reviews will have foreign keys for both the owning User as well as the target user record it is for, preventing it from being invalidated when a posting is removed. It will also include a text field for the review content as well as an integer column for rating.
     * **Favorites table:** The Favorites table will include foreign keys on both Users and Sublets, allowing a User to look up several Sublet records that were of interest to them at some point. This is a simple join table, and no other information should be required.
 
-Additional tables, such as those related to Auction/Bidding type listings may be added to support the product roadmap as features are implemented. Indexes will applied to all uniquely identifying fields such as ID’s (as well as other fields of import, such as email addresses or location data) to ensure fast lookups for individual and related records.
+Additional tables, such as those related to Auction/Bidding type listings may be added to support the product roadmap as features are implemented. Indexes will applied to all uniquely identifying fields such as IDs (as well as other fields of import, such as email addresses or location data) to ensure fast look-ups for individual and related records.
 
 ### 3.4. Portability
-We must create a functional web page that is accessible on all devices, and because of the web-based nature, we must ensure compatibility with the largest browsers: Google Chrome, FireFox, Edge, and Safari. This means that there should be no issue with accessing the project Windows, Mac OS X, or Linux. There will be a mobile friendly version of the site.
+We must create a functional web page that is accessible on all devices, and because of the web-based nature, we must ensure compatibility with the largest browsers: Google Chrome, FireFox, Edge, and Safari. This means that there should be no issue with accessing the project through Windows, Mac OS X, or Linux. There will be a mobile-friendly version of the site.
 * **Server-Side:** Use of a well-supported, platform agnostic language and framework such as Python/Django are recommended. Clients do not need to support these technologies as they will be accessing the application through their web browser.
 * **Client-Side:** Clients will need to have a modern web browser with support for HTML5, CSS, and JavaScript.
 
@@ -223,11 +221,11 @@ We must create a functional web page that is accessible on all devices, and beca
 This application is intended as a proof-of-concept and not for production-level scalability. As such, while common sense is to be used when implementing features, pre-optimization is not desired. For example, the application should be able to support 10 concurrent users at all times, or roughly 150 requests per minute (if each user were to make a request every 4 seconds).
 
 ### 3.6. Reliability
-The application will not crash or produce unexpected errors when within the performance confines outlined in section 3.5. Additionally, Subby will likely depend on a separate database server, so cases where this server becomes unavailable should be considered. As this is a proof of concept, load balancing, automated scaling, host health checks, or other reliability strategies are not required at this stage.
+The application will not crash or produce unexpected errors when within the performance confinements outlined in section 3.5. Additionally, Subby will likely depend on a separate database server, so cases where this server becomes unavailable should be considered. As this is a proof of concept, load balancing, automated scaling, host health checks, or other reliability strategies are not required at this stage.
 
 ### 3.7. Security
 There are a few main areas of concern for the security of this application:
-* **User Passwords:** User passwords must be hashed with a unique salt in the event that a malicious actor were to obtain a dump of the database. Additionally, user invitations must use one-time tokens; password resets require confirmation; and administrators are able to modify user account access should a user become compromised.
+* **User Passwords:** User passwords must be hashed with a unique salt in the event that a malicious actor were to obtain a dump of the database. Additionally, user invitations must use one-time tokens; password resets require confirmation; administrators are able to modify user account access should a user become compromised.
 * **Administrators:** Administrator accounts have powerful capabilities, and should only be created manually via migration. No UI will exist allowing a user or administrator to change their permission level.
 * **SQL Injection:** No queries are to be manually written that might allow for a user to supply a malicious payload.
 * **Logging:** Basic logging should be done for future investigation of security issues (request information such as route, client IP, etc).

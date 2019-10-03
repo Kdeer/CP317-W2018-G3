@@ -3,58 +3,58 @@
 ---
 ## Design Document
 
-1. **[Introduction](#1introduction)**
-  1.1. [Purpose](#11purpose)
-  1.2. [Intended Audience](#12intendedaudience)
-  1.3. [Product Scope](#13productscope)
-  1.4. [Referencing Documents](#14referencingdocuments)
-2. **[Major Features](#2majorfeatures)**
-  2.1. [Browse/Search Sublet Listings](#21browsesearchsubletlistings)
-  2.2. [Create Sublet Listings](#22createsubletlistings)
-  2.3. [Contact Sublet Owner](#23contactsubletowner)
-  2.4. [Create/Edit User Account](#24createedituseraccount)
-  2.5. [Add/Remove Favourite Sublet Listings](#25addremovefavouritesubletlistings)
-  2.6. [Edit/Delete Posted Sublet Listings](#26editdeletepostedsubletlistings)
-  2.7. [Submit Reports](#27submitreports)
-3. **[Design Considerations](#3designconsiderations)**
-  3.1. [Assumptions and Dependencies](#31assumptionsanddependencies)
-  3.2. [End-user Characteristics](#32endusercharacteristics)
-  3.3. [General Constraints](#33generalconstraints)
-  3.4. [Goals and Guidelines](#34goalsandguidelines)
-  3.5. [Development Methods](#35developmentmethods)
-4. **[Development Policies](#developmentpolicies)**
-  4.1. [Technical Standards and Guidelines](#41technicalstandardsandguidelines)
-  4.1.1. [General Guidelines](#411generalguidelines)
-  4.1.2. [Technical Standards](#412technicalstandards)
-  4.1.3. [Security and Privacy Considerations](#413securityandprivacyconsiderations)
-  4.1.4. [Control Flow](#414controlflow)
-  4.2. [Project Deployment](#42projectdeployment)
-5. **[Project Testing](#5projecttesting)**
-  5.1. [Testing Strategies](#51testingstrategies)
-6. **[Project Architecture](#6projectarchitecture)**
-  6.1. [Class Diagram](#61classdiagram)
-  6.2. [Package Details](#61packagedetails)
-  6.2.1. [User Package](#621userpackage)
-  6.2.2. [Sublet Package](#622subletpackage)
-  6.2.3. [Rating Package](#623ratingpackage)
-  6.2.4. [Favorite Package](#624favoritepackage)
-  6.2.5. [Report Package](#625reportpackage)
-7. **[Data Dictionary](#7datadictionary)**
-8. **[Revision History](#8revisionhistory)**
+1. **[Introduction](#1introduction)**  
+  1.1. [Purpose](#11purpose)  
+  1.2. [Intended Audience](#12intendedaudience)  
+  1.3. [Product Scope](#13productscope)  
+  1.4. [Referencing Documents](#14referencingdocuments)  
+2. **[Major Features](#2majorfeatures)**  
+  2.1. [Browse/Search Sublet Listings](#21browsesearchsubletlistings)  
+  2.2. [Create Sublet Listings](#22createsubletlistings)  
+  2.3. [Contact Sublet Owner](#23contactsubletowner)  
+  2.4. [Create/Edit User Account](#24createedituseraccount)  
+  2.5. [Add/Remove Favourite Sublet Listings](#25addremovefavouritesubletlistings)  
+  2.6. [Edit/Delete Posted Sublet Listings](#26editdeletepostedsubletlistings)  
+  2.7. [Submit Reports](#27submitreports)  
+3. **[Design Considerations](#3designconsiderations)**  
+  3.1. [Assumptions and Dependencies](#31assumptionsanddependencies)  
+  3.2. [End-user Characteristics](#32endusercharacteristics)  
+  3.3. [General Constraints](#33generalconstraints)  
+  3.4. [Goals and Guidelines](#34goalsandguidelines)  
+  3.5. [Development Methods](#35developmentmethods)  
+4. **[Development Policies](#developmentpolicies)**  
+  4.1. [Technical Standards and Guidelines](#41technicalstandardsandguidelines)  
+  4.1.1. [General Guidelines](#411generalguidelines)  
+  4.1.2. [Technical Standards](#412technicalstandards)  
+  4.1.3. [Security and Privacy Considerations](#413securityandprivacyconsiderations)  
+  4.1.4. [Control Flow](#414controlflow)  
+  4.2. [Project Deployment](#42projectdeployment)  
+5. **[Project Testing](#5projecttesting)**  
+  5.1. [Testing Strategies](#51testingstrategies)  
+6. **[Project Architecture](#6projectarchitecture)**  
+  6.1. [Class Diagram](#61classdiagram)  
+  6.2. [Package Details](#61packagedetails)  
+  6.2.1. [User Package](#621userpackage)  
+  6.2.2. [Sublet Package](#622subletpackage)  
+  6.2.3. [Rating Package](#623ratingpackage)  
+  6.2.4. [Favorite Package](#624favoritepackage)  
+  6.2.5. [Report Package](#625reportpackage)  
+7. **[Data Dictionary](#7datadictionary)**  
+8. **[Revision History](#8revisionhistory)**  
 
 # 1. Introduction
-In the Design Phase we consider the behaviour of the system and detail its design.
+In the Design Phase, we consider the behaviour of the system and detail its design.
 Here, the software architecture is established, providing the framework of the various subsystems and the interaction between them. Building on the Analysis Phase, the Architecture Design introduces the corresponding interfaces of the predefined modules outlined in the previous phases. Additionally, this phase incorporates the Detailed Design which outlays the algorithms and data structures responsible for the operation of the product modules.
 
 ## 1.1. Purpose
-The Design Phase seeks to capture and document the specific data structures and workflows of the system in order to provide a detailed description of the project's design and automation. Once completed, the development team may proceed with a reliable forecast of the project's time line and design for the Implementation Phase.
+The Design Phase seeks to capture and document the specific data structures and workflows of the system in order to provide a detailed description of the project's design and automation. Once completed, the development team may proceed with a reliable forecast of the project's timeline and design for the Implementation Phase.
 
 
 ## 1.2. Intended Audience
 The intended audience for Subby includes students in the Waterloo region who are either looking to sublet a place or are looking to rent their place out for a specified amount of time.
 
 ## 1.3. Product Scope
-The scope of Subby is driven by the need for a "one-stop shop" for Waterloo sublets. This will be done by creating, advertising and maintaining a sing website dedicated for finding and selling sublets. Achieving this will simplify an individual's search to find a place for the school year while also aiding in an individual's search for a renter. The finished product will be simple to use and easy to navigate through its various filters.
+The scope of Subby is driven by the need for a "one-stop shop" for Waterloo sublets. This will be done by creating, advertising and maintaining a single website dedicated for finding and selling sublets. Achieving this will simplify an individual's search to find a place for the school year while also aiding in an individual's search for a renter. The finished product will be simple to use and easy to navigate through its various filters.
 
 ## 1.4. Referencing Documents
 * [Requirements Documentation for Subby](https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Subby-Requirements.md.html)
@@ -66,16 +66,16 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
   * Browsing is not limited to registered users and listings are accessible to public users.
   * Users can browse listings using a list, or by manipulating an interactive map.
 * Search functions enable public and registered users to specify postings by location or address.
-  * Filters can be applied by users to refine searches using criteria such as, price range, size, number of rooms available, and duration of stay.
+  * Filters can be applied by users to refine searches using criteria such as price range, size, number of rooms available, and duration of stay.
   * Users can sort search results using price, date, and ratings.
 
 ## 2.2. Create Sublet Listings
 * Registered users can create sublet listings.
-  * Users can add details, such as the location and a description, of the listing and choose to upload photos as well.
+  * Users can add details, such as the location and a description of the listing and choose to upload photos as well.
   * Users can also add filters to their listing, enabling their listing to be included in more refined searches.
 
 ## 2.3. Contact Sublet Owners
-* Users can contact sublet owners through the subby platform.
+* Users can contact sublet owners through the Subby platform's "Contact Sublessor?".
   * An e-mail will be sent to the sublet owner's registered e-mail address and will include the attached message and the e-mail address with which the user registered.
   * The sublet owner will then be able to contact the user directly.
 
@@ -91,11 +91,11 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 
 ## 2.6. Edit/Delete Posted Sublet Listings
 * Users are able to modify any sublet listings that they post.
-  * Users are able to change any details, filter options or photos they included in their listing.
+  * Users are able to change any details, filter options or photos they include in their listing.
   * Users are also able to delete their listings at any time they desire.
 
 ## 2.7. Submit Reports
-* Users are able to issue reports concerning any violations of Subby's [Terms and Conditions Policy](https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&Conditions.md)
+* Users are able to issue reports concerning any violations of Subby's [Terms and Conditions Policy](https://rawgit.com/Kuresov/CP317-W2018-G3/master/documents/Terms&Conditions.md.html)
   * Reports will be reviewed by administrators and the appropriate penalties will be issued.
   * Penalties will depend on the severity of the violation and can range from deletion of the listing or temporary suspension to indefinite banning of the violating account.
 
@@ -111,7 +111,6 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 * Users are able to view available sublets on a map
 * Users can post their rooms for rent in addition to posting "wanted" ads
 * Users can rate other users based on their experiences
-* Users are able to place a bid on properties they are interested in
 
 ## 3.3. General Constraints
 * Google Maps API Budget
@@ -142,7 +141,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
   * Code should be [DRY](https://www.artima.com/intv/dry.html); functionality should be abstracted, rather than repeated, to avoid issues in maintenance.
 * Methods that perform non-trivial operations should have a short comment with a description of their side-effects.
 * Blocks within methods that are complex should have a short comment explaining their purpose.
-* Frontend HTML and CSS must be in compliance with the established [W3C standards](https://www.w3.org/standards/).
+* Front-end HTML and CSS must be in compliance with the established [W3C standards](https://www.w3.org/standards/).
 * Browser Compatibility.
   * Bootstrap front-end framework will be used to ease cross-browser compatibility
   * A CSS reset stylesheet will be used to ensure behavior consistency between browsers
@@ -161,7 +160,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
       * 500: Internal Server Error
       * 502: Bad Gateway
       * 503: Service Unavailable
-    * Resulting error pages will be customized to display a description of the error in layman’s terms and should be formatted consistent       with Subby’s website branding.
+    * Resulting error pages will be customized to display a description of the error in layman’s terms and should be formatted consistent with Subby’s website branding.
   * Exception Handling.
     * Every client request will be wrapped in try-except handlers to catch and report any unhandled error.
     * Any code that is likely to raise a common Python or Django exception, such as IOError or ImportError will be wrapped in try-   exception handlers.
@@ -176,10 +175,9 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
       * By default, a User’s username, published listings and pictures and profile description will be shared with all Users and
 	Visitors.
 * User Authentication.
-  * Subby will use single sign-on to authenticate Users;
+  * Subby will use a single sign-on approach to authenticate Users;
   * Usernames must be unique and can contain letters (A-Z), numbers (0-9), dashes (-), underscores (_), and periods (.);
   * Passwords can contain any combination of printable ASCII characters and must contain a minimum of 8 characters comprised of at least       one number and one special character  (e.g. !, @, #, $, etc.).
-
    * Passwords will be automatically salted to further safeguard passwords before they are stored in the database.
 * User Access and Permissions.
    * Based on the functional requirements of Users and on security considerations, Subby will offer three permission levels:
@@ -195,8 +193,9 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
        * review and respond to reports and flagged User listings and accounts
    * Below, Table A summarizes the aforementioned User Access Controls
 
-     **Table A**
     ![permissionsSummary](https://i.imgur.com/OisjZIs.png)
+
+    **Table A**
 
 
    * For more details on User functionalities and permissions, refer to **[Major Features](#2majorfeatures)**
@@ -216,7 +215,7 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 
 
 ### 4.1.4. Control Flow
-*	Data will transmit between client and PostgreSQL database. Client interacts with the PostgreSQL database using [PHP Data Objects (PDO)](http://php.net/manual/en/book.pdo.php) API. It allows performing the common database operations in PHP such as creating new tables, inserting data, updating data, querying data, deleting data and so on. Once the connection is established successfully, client will directly send query to database and database will respond corresponding answers to client.
+*	Data transmitted from the client will be saved in a PostgreSQL database. The client interacts with the web server, which uses the `django.db` database adapter to perform common operations such as inserting, updating, and querying data. This database adapter will also allow for the creation of data migrations to create schemas and tables as necessary in development and production. The client will not have direct database access- all communication will be handled by the web server.
 
 
 ## 4.2 Project Deployment
@@ -232,13 +231,14 @@ The scope of Subby is driven by the need for a "one-stop shop" for Waterloo subl
 
 # 6. Project Architecture
 ## 6.1. Class Diagram
-![DesignClassDiagram](https://i.imgur.com/li2CAi4.jpg)
+_Note that this large diagram is an overview to show the relationships between the classes. More detail on each class is provided below._
+![DesignClassDiagram](https://i.imgur.com/li2CAi4.jpg =1900x1491)
 
 ## 6.2. Package Details
 As discussed in the Analysis Phase, the system consists of five packages: User Package, Sublet Package, Rating Package, Favourite Package, and Report Package. Within each package diagram, we list the relevant entity objects and their corresponding methods. Additionally, each package diagram includes the control objects responsible for realizing the major use cases representing the interactions between external actors and the system.
 
 ## 6.2.1 User Package
-![UserPackage](https://i.imgur.com/0QpnLzZ.jpg)
+![UserPackage](https://i.imgur.com/IpKHU5d.jpg)
 
 ## 6.2.2 Sublet Package
 ![SubbySubletPackage](https://i.imgur.com/T55Cppm.jpg)
@@ -257,29 +257,33 @@ As discussed in the Analysis Phase, the system consists of five packages: User P
 
 
 # 8. Revision History
+## Version 2
+* **Section 6**
+    * Alex Kirsopp [6.2.1] [2018-08-09]
+
 ## Version 1.0
 * **Section 1**
-  * Sarah Younes [1.0 - 1.1] [2018-07-01]
-  * Sandra Sung [1.2 - 1.4] [2018-07-03]
+    * Sarah Younes [1.0 - 1.1] [2018-07-01]
+    * Sandra Sung [1.2 - 1.4] [2018-07-03]
 
 * **Section 2**
-  * Jingchi Chen [2.1 - 2.3] [2018-07-04]
-  * Ronald Lwin [2.1 - 2.7] [2018-07-14]
+    * Jingchi Chen [2.1 - 2.3] [2018-07-04]
+    * Ronald Lwin [2.1 - 2.7] [2018-07-14]
 
 * **Section 3**
-  * Sandra Sung [3.1 - 3.5] [2018-07-03]
+    * Sandra Sung [3.1 - 3.5] [2018-07-03]
 
 * **Section 4**
-  *  Alex Kirsopp [4.1] [2018-06-20]
-  *  Sarah Younes [4.1.2 - 4.1.4] [2018-07-02]
+    *  Alex Kirsopp [4.1] [2018-06-20]
+    *  Sarah Younes [4.1.2 - 4.1.4] [2018-07-02]
 
 * **Section 5**
-  *  Ronald Lwin [5.1] [2018-07-17]
+    *  Ronald Lwin [5.1] [2018-07-17]
 
 * **Section 6**
-  *  Alex Kirsopp [6.2.1] [2018-06-27]
-  *  Xiaochao Luo [6.2.5] [2018-07-01]
-  * Sarah Younes [6.1] [2018-07-02]
+    *  Alex Kirsopp [6.2.1] [2018-06-27]
+    *  Xiaochao Luo [6.2.5] [2018-07-01]
+    *  Sarah Younes [6.1] [2018-07-02]
 
 * **Other**
     * Alex Kirsopp - Layout, initial outline, markdown, etc

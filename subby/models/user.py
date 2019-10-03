@@ -18,6 +18,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default = True)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now_add = True)
+    
+    username = models.CharField(max_length=20,blank=False,null=False)
 
     objects = UserManager()
 
@@ -27,17 +29,18 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return "{} - admin: {}".format(self.email, self.is_admin)
 
-    # Required methods based on Django assumptions
+    def email_user(self, subject, message, from_email = None, **kwargs):
+        send_mail(subject, message, from_email, [self.email], **kwargs)
+    
+    # Required method based on Django assumptions
     def get_full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
 
+    # Required method based on Django assumptions
     def get_short_name(self):
         return self.first_name
 
-    def email_user(self, subject, message, from_email = None, **kwargs):
-        send_mail(subject, message, from_email, [self.email], **kwargs)
-
-    # Required for Django built-in; we aren't using this, so return False
+    # Required for Django; we aren't using this functionality, so return False
     def is_staff(self):
         return False
 
@@ -46,8 +49,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         app_label = 'subby'
         verbose_name = 'user'
         verbose_name_plural = 'users'
+		
+    def set_username(self, username):
+       self.username = username
+       return
 
 # Object Lifecycle Callbacks
 @receiver(pre_save, sender=User)
 def pre_save(sender, **kwargs):
     sender.updated_at = pytz.utc.localize(datetime.datetime.now())
+	

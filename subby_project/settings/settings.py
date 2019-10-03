@@ -26,11 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'social_django',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -41,6 +43,32 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'subby_project.urls'
+
+AUTHENTICATION_BACKENDS = (
+    # 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    # 'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    # 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    # 'social_core.backends.github.GithubOAuth2',  # for Github authentication
+    # 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+
+    #{% url 'social:begin' 'google-oauth2' %}
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# SOCIAL_AUTH_USER_MODEL = 'subby.User'
+# SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    # 'https://www.googleapis.com/auth/plus.login',
+    # 'https://www.googleapis.com/auth/plus.me'
+# ]
+# SOCIAL_AUTH_GOOGLE_PLUS_USE_DEPRECATED_API = True
+
+USER_FIELDS = [
+    'email'
+]
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='864197588529-ud4gaokbk8toqt5ked3jjndulo0t3tjh.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'bUZHu3vLxyNNeY04GlM1Uzmz'
 
 TEMPLATES = [
     {
@@ -53,6 +81,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
             'libraries': {
                 'index': 'subby.templatetags.index',
@@ -60,6 +90,9 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_URL = 'subby:login'
+LOGIN_REDIRECT_URL = 'subby:index'
 
 WSGI_APPLICATION = 'subby_project.wsgi.application'
 

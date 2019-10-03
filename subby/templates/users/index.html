@@ -40,17 +40,15 @@
                             <div class="col-md-4"><h5>Last Name</h5></div>
                         </div>
                         {% for user in users %}
-                            <div class="row">
-                                <div class="col-md-4"><a href="{% url 'subby:user_show' user.id %}">{{ user.email }}</a></div>
+                            <div class="row user-row" onclick="window.location='{% url 'subby:user_show' user.id %}';">
                                 <div class="col-md-4">
-                                    <a href="{% url 'subby:user_show' user.id %}">
-                                        {% if user.first_name != None %} {{ user.first_name }} {% else %} {% endif %}
-                                    </a>
+                                    <span>{{ user.email }}</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="{% url 'subby:user_show' user.id %}">
-                                        {% if user.last_name != None %} {{ user.last_name }} {% else %} {% endif %}
-                                    </a>
+                                    <span>{% if user.first_name != None %} {{ user.first_name }} {% else %} {% endif %}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>{% if user.last_name != None %} {{ user.last_name }} {% else %} {% endif %}</span>
                                 </div>
                             </div>
                         {% endfor %}
